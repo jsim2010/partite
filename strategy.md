@@ -72,6 +72,11 @@ Every director shall act on each amendment by performing one of the following ac
         - oppposing the amendment, which adds 1 to the nos.
 After all directors have acted on an amendment, if the ayes is greater than the nos, an executor shall adopt the amendment, which applies its alteration to the vision; otherwise, an executor shall defeat the amendment by deleting it.
 
+## Contract
+
+contract
+: The expectations that an external object requires the concept must meet.
+
 ## Strategy
 
 strategy
