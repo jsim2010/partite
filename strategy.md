@@ -1,191 +1,216 @@
 # Partite
 
-AID
-: Agent IDentifier
-: A symbol that uniquely identifies an agent.
+product
+: The item resulting from the development process.
+
+relation
+: An item that has a connection to the product.
+
+vision
+: A succint purpose that describes the intention of the product.
+
+contract
+: The expectations that a relation requires the product to meet.
+
+strategy
+: A detailed specification of a product.
+
+vote
+: Indicates a director's opinion on a decision.
+: At a minimum, a vote shall include the options:
+        - UNKNOWN
+        - YES
+        - NO
+
+operative
+: An entity that influences the development of the product.
+
+standard
+: A description of the conditions that shall cause the executor to perform a defined action.
+        
+### Roles
+
+A role defines the actions that an operative is allowed to perform.
 
 executor
-: An agent who follows a specified set of rules as part of the workflow.
+: A role where the operative follows the standards.
+
+director
+: A role where the operative modifies and maintains the vision.
+
+contractor
+: A role where the operative defines a section of the contract.
+
+designer
+: A role where the operative modifies the strategy.
+
+TODO: How do roles get assigned and unassigned to operatives?
+
+### Standards
+
+TODO: Who defines/changes the standards?
+
+#### Adoption
+When the executor shall adopt a motion.
+
+#### Defeat
+When the executor shall defeat a motion.
+
+#### Acceptance
+When the executor shall accept an appraisal.
+
+#### Declination
+When the executor shall decline an appraisal.
+
+#### Validation
+When the executor shall validate a blueprint.
+
+#### Invalidation
+When the executor shall invalidate a blueprint.
 
 ## Vision
 
-vision
-: A purpose that describes the intention of a concept.
-: Should be succinct and avoid any specification or implementation details.
-
-MID
-: Motion IDentifier
-: A symbol that uniquely identifies a motion
+premise
+: An explanation of what is unclear in the current vision.
 
 alteration
-: A collection of modifications to a vision.
-
-premise
-: A description of what an alteration is meant to clarify.
-
-proposer
-: An agent who proposed a motion.
-
-motion
-: An object composed of:
-        - id: a MID
-        - proposer: the AID of the proposer
-        - alteration: an alteration
-        - premise: a premise
+: A collection of modifications to the vision.
 
 amendment
 : An object composed of:
-        - motion: a motion
-        - ayes: a counter of ayes
-        - nos: a counter of nos
+        - a premise
+        - an alteration
 
-director
-: The role of an agent who creates and maintains the vision.
+motion
+: An object composed of:
+        - an admendment
+        - a mapping of each director to their vote on adopting the motion.
 
----
-```
-graph LR
-        1((begin)) --propose--> Motion
-        Motion --advance--> Amendment
-        Motion --drop--> 2((end))
-        Amendment --favor--> Amendment
-        Amendment -- oppose--> Amendment
-        Amendment --adopt--> 3((adoption))
-        Amendment --defeat--> 2((end))
-end
-```
+### Actions
 
-Any director can propose a motion, which initializes a motion with the following values:
-        - id: an identifier unique from the MID's of all motions
-        - proposer: the AID of the director who proposed the motion
-        - alteration: blank
-        - premise: blank
-A proposer can:
-        - edit the alteration and/or premise of the motion.
-        - drop the motion, which deletes it.
-        - advance the motion, which initializes an amendment with the following values:
-                - motion: the motion that was advanced
-                - ayes: 0
-                - nos: 0
-Every director shall act on each amendment by performing one of the following actions upon it:
-        - favoring the amendment, which adds 1 to the ayes.
-        - oppposing the amendment, which adds 1 to the nos.
-After all directors have acted on an amendment, if the ayes is greater than the nos, an executor shall adopt the amendment, which applies its alteration to the vision; otherwise, an executor shall defeat the amendment by deleting it.
+advance an amendment
+
+| Roles | director |
+| Intent | To modify the vision in order to improve its clarity. |
+| Outcome | Creates a motion with the amendment and all votes marked as UNKNOWN. |
+
+support a motion
+
+| Roles | director |
+| Intent | To indicate the director desires the motion be adopted. |
+| Outcome | Marks the director's vote for the motion as YES. |
+
+oppose a motion
+
+| Roles | director |
+| Intent | To indicate the director desires the motion not be adopted. |
+| Outcome | Marks the director's vote for the motion as NO. |
+
+adopt a motion
+
+| Roles | executor |
+| Outcome | Modifies the vision as specified by the alteration. |
+
+defeat a motion
+
+| Roles | executor |
+| Outcome | Removes the motion from consideration. |
 
 ## Contract
 
-contract
-: The expectations that an external object requires the concept must meet.
+TODO: How does a contractor modify their contract? Do directors and/or designers need to approve modifications?
 
 ## Strategy
 
-strategy
-: A detailed specification of a concept.
+critique
+: An explanation of why the current strategy does not fully meet the vision.
 
 mission
-: A description of a desired modification to a strategy.
-: Should provide the following:
-        - an explanation of the current state of the strategy that does not fully meet the vision
-        - a proposal to modify the strategy in a way that is believed to better meet the vision
-
-petitioner
-: An agent who started a petition.
-
-rationale
-: An explanation of why a mission does not fit the scope of a vision or work with the current strategy.
-
-PID
-: Petition IDentifier
-: A symbol that uniquely identifies a petition.
+: An explanation of how the strategy could meet the vision
 
 petition
 : An object composed of:
-        - id: a PID
-        - petitioner: the AID of the petitioner
-        - mission: a mission
-        - rationales: a list of all rationales from previous denials or appeals of the petition.
+        - a critique
+        - a mission
 
 appraisal
 : An object composed of:
-        - petition: a petition
+        - a petition
+        - a mapping of each director with their vote on accepting the appraisal
 
-approver
-: An agent who approved an appraisal.
+direction
+: An object composed of:
+        - a mission
 
 revision
 : A collection of modifications to a strategy.
-
-flaw
-: An explanation of why a revision does not satisfy the intent of a mission.
-
+        
 blueprint
-: An object composed of:
-        - petition: a petition
-        - approver: the AID of the approver
-        - revision: a revision
-        - flaws: a list of all flaws from previous vetos
-
-designer
-: An agent who develops the strategy.
-
-committer
-: An agent who committed a blueprint.
-
-review
-: An object composed of:
-        - blueprint: a blueprint
-        - committer: the AID of the committer
-        - petitioner_affirmation: a flag indicating the affirmation of the petitioner
-        - approver_affirmation: a flag indicating the affirmation of the approver
+: An object composed of
+        - a direction
+        - a revision
+        - a mapping of each director with their vote on confirming the blueprint
 
 edition
 : The state of a strategy at a given time.
 
----
-```
-graph LR
-        4((begin)) --start--> Petition
-        Petition --tender--> Appraisal
-        Petition --withdraw--> 5((end))
-        Appraisal --approve--> Blueprint
-        Appraisal --deny--> Petition
-        Blueprint --commit--> Review
-        Blueprint --appeal--> Petition
-        Review --affirm--> Review
-        Review --confirm--> Edition
-        Review --veto--> Blueprint
-end
-```
+### Actions
 
-Any agent can start a petition, which initializes a petition with the following values:
-        - id: an identifier unique from the PID's of all petitions
-        - petitioner: the AID of the petitioner
-        - mission: blank
-        - rationales: empty
-The petitioner of a petition can:
-        - edit the mission of the petition
-        - withdraw the petition, which deletes it.
-        - tender the petition, which initializes an appraisal with the following values:
-                - petition: the petition that was requested
-Any director can perform the following actions on an appraisal:
-        - approve it, which initializes a blueprint with the following values:
-                - petition: the petition
-                - approver: the AID of the approver
-                - revision: blank
-                - flaws: blank
-        - deny it, which appends a rationale to the petition and deletes the appraisal (leaving the petition)
-Any designer can perform the following actions on a blueprint:
-        - edit its revision
-        - appeal it which appends a rationale to the petition and deletes the blueprint (leaving the petition)
-        - if the revision is non-empty, commit it, which initializes a review with the following values:
-                - blueprint: the blueprint
-                - committer: the AID of the committer
-                - petitioner_affirmation: false
-                - approver_affirmation: false
-Both the petitioner and the approver of a petition can perform the following actions on a review containing the petition:
-        - veto it, which appends a flaw to the blueprint and deletes the review (leaving the blueprint)
-        - affirm it, which sets the appropriate affirmation flag to true
-If both affirmation flags of a review are set to true, an executor SHALL confirm the review, which applies the revision to the strategy to generate a new edition.
+submit a petition
+
+| Role | any operative |
+| Intent | To state the strategy does not meet the full intent of the vision. |
+| Outcome | Creates an appraisal with the given petition and all votes marked as UNKNOWN. |
+
+endorse an appraisal
+
+| Role | director |
+| Intent | To indicate the director believes the critique is valid. |
+| Outcome | Marks the director's vote in the appraisal as YES. |
+
+dispute an appraisal
+
+| Role | director |
+| Intent | To indicate the director believes the critique is not valid. |
+| Outcome | Marks the director's vote in the appraisal as NO. |
+
+accept an appraisal
+
+| Role | executor |
+| Outcome | Creates a direction with the mission. |
+
+decline an appraisal
+
+| Role | executor |
+| Outcome | Removes the petition from consideration. |
+
+draft a direction
+
+| Role | designer |
+| Intent | To make a revision that completes the direction. |
+| Outcome | Creates a blueprint with the direction, the revision, and all votes marked as UNKNOWN. |
+
+approve a blueprint
+
+| Role | director |
+| Intent | To indicate the director believes the blueprint successfully meets the mission. |
+| Outcome | Marks the director's vote in the blueprint as YES. |
+
+disapprove a blueprint
+
+| Role | director |
+| Intent | To indicate the director believes the blueprint does not successfully meet the mission. |
+| Outcome | Marks the director's vote in the blueprint as NO. |
+
+validate a blueprint
+
+| Role | executor |
+| Outcome | Creates an edition. |
+
+invalidate a blueprint
+
+| Role | executor |
+| Outcome | Creates a direction from the mission. |
 
 ## Product
 
