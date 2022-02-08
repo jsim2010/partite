@@ -1,88 +1,102 @@
 # Partite
 
-product
-: The item resulting from the development process.
+## 1) Definitions
 
-relation
-: An item that has a connection to the product.
+The given terms shall be defined as follows:
 
-vision
-: A succint purpose that describes the intention of the product.
+**product**: The item resulting from the development process.
 
-contract
-: The expectations that a relation requires the product to meet.
+**project**: The management of the product's development.
 
-strategy
-: A detailed specification of a product.
+**operative**: An entity that influences the development of the product.
 
-vote
-: Indicates a director's opinion on a decision.
-: At a minimum, a vote shall include the options:
-        - UNKNOWN
-        - YES
-        - NO
+**vote**: Indicates an operative's opinion on a decision.
 
-operative
-: An entity that influences the development of the product.
+**vision**: A succinct purpose that describes the intention of the product.
 
-standard
-: A description of the conditions that shall cause the executor to perform a defined action.
+**relation**: An item that has a dependence on the product.
+
+**contract**: The expectations that a relation requires the product to meet.
+
+**strategy**: A detailed specification of the product.
+
+**role**: A classification that can be assigned to an operative which defines the actions that an operative is allowed to perform.
+
+**statute**: The conditions which permit modifying the assignment of a specified role to a given operative.
+
+**policy**: The conditions that shall cause an operative to perform a specified action.
         
-### Roles
+## 2) Roles
 
-A role defines the actions that an operative is allowed to perform.
+The given roles shall be defined as follows:
 
-executor
-: A role where the operative follows the standards.
+**director**: Guides the direction of the project.
 
-director
-: A role where the operative modifies and maintains the vision.
+**executor**: Enacts the policies of the project.
 
-contractor
-: A role where the operative defines a section of the contract.
+**architect**: Maintains the strategy as directed.
 
-designer
-: A role where the operative modifies the strategy.
+## 3) Project Creation
 
-TODO: How do roles get assigned and unassigned to operatives?
+In order to create a project, the following steps shall be followed:
 
-### Standards
+1. Establish one or more operatives that shall be assigned the director role.
+2. Every director shall agree on the following:
+    1. The vision of the project.
+    2. The assignment of the executor role to at least 1 active operative.
+    3. The assignment and unassignment statutes for each role.
+    4. Each of the project's policies.
 
-TODO: Who defines/changes the standards?
+> TODO: Perhaps codify this more.
 
-#### Adoption
-When the executor shall adopt a motion.
+## 4) Statutes
 
-#### Defeat
-When the executor shall defeat a motion.
+Each role shall have an assignment statute and an unassignment statute.
 
-#### Acceptance
-When the executor shall accept an appraisal.
+## 5) Policies
 
-#### Declination
-When the executor shall decline an appraisal.
+The available choices shall at least include:
+- UNKNOWN
+- YES
+- NO
 
-#### Validation
-When the executor shall validate a blueprint.
+TODO: Who defines/changes the policies?
 
-#### Invalidation
-When the executor shall invalidate a blueprint.
+adoption
+> When the executor shall adopt a motion.
 
-## Vision
+defeat
+> When the executor shall defeat a motion.
+
+acceptance
+> When the executor shall accept an appraisal.
+
+declination
+> When the executor shall decline an appraisal.
+
+validation
+> When the executor shall validate a blueprint.
+
+invalidation
+> When the executor shall invalidate a blueprint.
+
+## Motions
+
+> TODO: Change to include motions for policies and statutes.
 
 premise
-: An explanation of what is unclear in the current vision.
+> An explanation of what is unclear in the current vision.
 
 alteration
-: A collection of modifications to the vision.
+> A collection of modifications to the vision.
 
 amendment
-: An object composed of:
+> An object composed of:
         - a premise
         - an alteration
 
 motion
-: An object composed of:
+> An object composed of:
         - an admendment
         - a mapping of each director to their vote on adopting the motion.
 
@@ -90,9 +104,9 @@ motion
 
 advance an amendment
 
-| Roles | director |
-| Intent | To modify the vision in order to improve its clarity. |
-| Outcome | Creates a motion with the amendment and all votes marked as UNKNOWN. |
+> Roles: `director`
+> Intent: `To propose a modification to the vision to improve its clarity.`
+> Outcome: `Creates a motion with the amendment and all votes marked as UNKNOWN.`
 
 support a motion
 
@@ -138,7 +152,7 @@ appraisal
         - a petition
         - a mapping of each director with their vote on accepting the appraisal
 
-direction
+directive
 : An object composed of:
         - a mission
 
@@ -147,7 +161,7 @@ revision
         
 blueprint
 : An object composed of
-        - a direction
+        - a directive
         - a revision
         - a mapping of each director with their vote on confirming the blueprint
 
@@ -177,18 +191,18 @@ dispute an appraisal
 accept an appraisal
 
 | Role | executor |
-| Outcome | Creates a direction with the mission. |
+| Outcome | Creates a directive with the mission. |
 
 decline an appraisal
 
 | Role | executor |
 | Outcome | Removes the petition from consideration. |
 
-draft a direction
+draft a blueprint
 
 | Role | designer |
-| Intent | To make a revision that completes the direction. |
-| Outcome | Creates a blueprint with the direction, the revision, and all votes marked as UNKNOWN. |
+| Intent | To make a revision that completes a directive. |
+| Outcome | Creates a blueprint with the directive, the revision, and all votes marked as UNKNOWN. |
 
 approve a blueprint
 
@@ -210,7 +224,7 @@ validate a blueprint
 invalidate a blueprint
 
 | Role | executor |
-| Outcome | Creates a direction from the mission. |
+| Outcome | Creates a directive from the mission. |
 
 ## Product
 
@@ -349,3 +363,5 @@ Any developer can perform the following actions on a task:
                 - task: the task
                 - submitter: the submitter
 An executor shall perform the inspection on the product with the patch applied. If the inspection passes, the executorshall certify the submission, which applies the patch to the product to create a new version. Otherwise, the executor shall reject the submission, which appends a defect to the task and deletes the submission (leaving the task).
+
+TODO How to close/archive a project.
