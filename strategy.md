@@ -2,8 +2,6 @@
 
 ## 1) Definitions
 
-The given terms shall be defined as follows:
-
 **product**: The item resulting from the development process.
 
 **project**: The management of the product's development.
@@ -11,6 +9,10 @@ The given terms shall be defined as follows:
 **operative**: An entity that influences the development of the product.
 
 **vote**: Indicates an operative's opinion on a decision.
+
+**blank**: Indicates an operative's vote is not yet known.
+
+**register**: A mapping of a list of operatives to their vote.
 
 **vision**: A succinct purpose that describes the intention of the product.
 
@@ -24,115 +26,166 @@ The given terms shall be defined as follows:
 
 **statute**: The conditions which permit modifying the assignment of a specified role to a given operative.
 
-**policy**: The conditions that shall cause an operative to perform a specified action.
+**policy**: The conditions that shall cause an operative to execute a specified action.
         
 ## 2) Roles
-
-The given roles shall be defined as follows:
 
 **director**: Guides the direction of the project.
 
 **executor**: Enacts the policies of the project.
 
-**architect**: Maintains the strategy as directed.
+**drafter**: Maintains the contract as directed.
+
+**architect**: 
 
 ## 3) Project Creation
 
-In order to create a project, the following steps shall be followed:
+In order to create a project, one or more operatives shall establish and agree on the following:
 
-1. Establish one or more operatives that shall be assigned the director role.
-2. Every director shall agree on the following:
-    1. The vision of the project.
-    2. The assignment of the executor role to at least 1 active operative.
-    3. The assignment and unassignment statutes for each role.
-    4. Each of the project's policies.
-
-> TODO: Perhaps codify this more.
+1. The appointment of the director role to each of the founding operatives.
+2. The vision of the project.
+3. The appointment and dismissal statutes for each role.
+4. Each of the project's policies.
+5. The appointment of the executor role to at least 1 active operative.
 
 ## 4) Statutes
 
-Each role shall have an assignment statute and an unassignment statute.
+Each role shall have 1 statute for its appointment and 1 statute for its dimissal.
+
+### 4.1) Resignation
+
+Any operative shall be able to dismiss themselves from any of their current roles.
 
 ## 5) Policies
 
-The available choices shall at least include:
-- UNKNOWN
-- YES
-- NO
+### 5.1) Voting
 
-TODO: Who defines/changes the policies?
+The following policies deal with interpreting votes on an action and are defined in pairs. For each pair, the conditions of one policy must have no overlap with the conditions of the other policy.
 
-adoption
-> When the executor shall adopt a motion.
+#### 5.1.1) Motions
+**adoption**: When an executor shall adopt a motion.
 
-defeat
-> When the executor shall defeat a motion.
+**defeat**: When an executor shall defeat a motion.
 
-acceptance
-> When the executor shall accept an appraisal.
+#### 5.1.2) Requests
+**acceptance**: When an executor shall accept a request.
 
-declination
-> When the executor shall decline an appraisal.
+**declination**: When an executor shall decline a request.
 
-validation
-> When the executor shall validate a blueprint.
+#### 5.1.3) Amendments
+**approval**: When an executor shall approve an amendment.
 
-invalidation
-> When the executor shall invalidate a blueprint.
+**rejection** When an executor shall reject an amendment.
 
-## Motions
+## 6) Motions
 
-> TODO: Change to include motions for policies and statutes.
+### 6.1) Definitions
 
-premise
-> An explanation of what is unclear in the current vision.
+**alteration**: a collection of modifications to the statutes, policies, and/or vision of the project.
 
-alteration
-> A collection of modifications to the vision.
+**premise**: an explanation of what issue an alteration intends to resolve
 
-amendment
-> An object composed of:
-        - a premise
-        - an alteration
+**correction**: an object composed of:
+- a premise
+- an alteration
 
-motion
-> An object composed of:
-        - an admendment
-        - a mapping of each director to their vote on adopting the motion.
+**motion**: an object composed of:
+- a correction
+- a register of each director's vote on adopting the motion
 
-### Actions
+### 6.2) Actions
 
-advance an amendment
+The following actions related to a motion may be performed:
 
-> Roles: `director`
-> Intent: `To propose a modification to the vision to improve its clarity.`
-> Outcome: `Creates a motion with the amendment and all votes marked as UNKNOWN.`
+propose a correction
 
-support a motion
+- Roles: `director`
+- Intent: `To improve the statutes, policies or vision of the project.`
+- Outcome: `Creates a motion with the correction and all votes in its register marked as blank.`
 
-| Roles | director |
-| Intent | To indicate the director desires the motion be adopted. |
-| Outcome | Marks the director's vote for the motion as YES. |
+weigh on a motion
 
-oppose a motion
-
-| Roles | director |
-| Intent | To indicate the director desires the motion not be adopted. |
-| Outcome | Marks the director's vote for the motion as NO. |
+- Roles: `director`
+- Intent: `To indicate the director's opinion on the correction improving the project.`
+- Outcome: `Marks the director's vote in the motion.` 
 
 adopt a motion
 
-| Roles | executor |
-| Outcome | Modifies the vision as specified by the alteration. |
+- Roles: `executor`
+- Outcome: `Modifies the statutes, policies and/or vision of the project as specified by the alteration.`
 
 defeat a motion
 
-| Roles | executor |
-| Outcome | Removes the motion from consideration. |
+- Roles: `executor`
+- Outcome: `Removes the motion from consideration.`
 
-## Contract
+## 7) Contract
 
-TODO: How does a contractor modify their contract? Do directors and/or designers need to approve modifications?
+### 7.1) Definitions
+
+**mission**: An explanation of a desired change to the contract.
+
+**request**: An object composed of:
+- a mission
+- a register of each director's vote on authorizing the mission
+
+**directive**: An object composed of:
+- a mission
+
+**revision**: A collection of modifications to a contract.
+
+**amendment**: An object composed of:
+- a mission
+- a revision
+- a register of each director's vote on authorizing the mission
+
+### 7.2) Actions
+
+introduce a mission
+
+- Roles: `any`
+- Intent: `To request the contract be modified to more fully meet the vision.`
+- Outcome: `Creates a request with the mission and all votes in its register marked as blank.`
+
+judge a request
+
+- Roles: `director`
+- Intent: `To indicate the director's opinion on the validity of the mission.`
+- Outcome: `Marks the director's vote in the register of the request.`
+
+accept a request
+
+- Roles: `executor`
+- Outcome: `Creates a directive with the mission of the request.`
+
+decline a request
+
+- Roles: `executor`
+- Outcome: `Removes the request from consideration.`
+
+draft an amendment
+
+- Roles: `drafter`
+- Intent: `To create a revision that fulfills the mission of a directive.`
+- Outcome: `Creates an amendment with the mission, the revision, and all votes in the register marked as blank.`
+
+appraise an amendment
+
+- Roles: `director`
+- Intent: `To indicate the director's opinion on the revision meeting the mission and the vision.`
+- Outcome: `Marks the director's vote in the register of the amendment.`
+
+approve an amendment
+
+- Roles: `executor`
+- Outcome:
+
+> TODO: Does this create a new version of the contract? Does this trigger a process for updating the strategy?
+
+reject an amendment
+
+- Roles: `executor`
+- Outcome: `Creates a directive with the mission.`
 
 ## Strategy
 
@@ -156,7 +209,7 @@ directive
 : An object composed of:
         - a mission
 
-revision
+adaptation
 : A collection of modifications to a strategy.
         
 blueprint
