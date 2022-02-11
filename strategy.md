@@ -16,9 +16,7 @@
 
 **vision**: A succinct purpose that describes the intention of the product.
 
-**relation**: An item that has a dependence on the product.
-
-**contract**: The expectations that a relation requires the product to meet.
+**contract**: The expectations that dependencies of the product require.
 
 **strategy**: A detailed specification of the product.
 
@@ -36,7 +34,7 @@
 
 **drafter**: Maintains the contract as directed.
 
-**architect**: 
+> TODO: **architect**: 
 
 ## 3) Project Creation
 
@@ -139,6 +137,8 @@ defeat a motion
 - a revision
 - a register of each director's vote on authorizing the mission
 
+**issue**: The state of the contract at a given point.
+
 ### 7.2) Actions
 
 introduce a mission
@@ -167,7 +167,7 @@ draft an amendment
 
 - Roles: `drafter`
 - Intent: `To create a revision that fulfills the mission of a directive.`
-- Outcome: `Creates an amendment with the mission, the revision, and all votes in the register marked as blank.`
+- Outcome: `Creates an amendment with the mission, the revision and all votes in the register marked as blank.`
 
 appraise an amendment
 
@@ -178,9 +178,7 @@ appraise an amendment
 approve an amendment
 
 - Roles: `executor`
-- Outcome:
-
-> TODO: Does this create a new version of the contract? Does this trigger a process for updating the strategy?
+- Outcome: `Creates an issue from applying the revision to the contract.`
 
 reject an amendment
 
@@ -189,11 +187,10 @@ reject an amendment
 
 ## Strategy
 
+> TODO: How does a new issue of the contract get handled?
+
 critique
 : An explanation of why the current strategy does not fully meet the vision.
-
-mission
-: An explanation of how the strategy could meet the vision
 
 petition
 : An object composed of:
