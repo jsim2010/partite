@@ -16,9 +16,19 @@
 
 **vision**: A succinct purpose that describes the intention of the product.
 
-**contract**: The expectations that dependencies of the product require.
+**outcome**: A description of the behavior that occurs when a product is affected in a specified manner.
 
-**strategy**: A detailed specification of the product.
+**requirement**: An outcome that the product is expected to produce.
+
+**contract**: A collection of requirements.
+
+**test**: A comparison between a requirement and the actual outcome of the product.
+
+**inspection**: A collection of tests that cover the entirety of the contract.
+
+**specification**: An explanation of how the product shall pass a portion of the inspection.
+
+**strategy**: A collection of specifications that cover the entirety of the inspection.
 
 **role**: A classification that can be assigned to an operative which defines the actions that an operative is allowed to perform.
 
@@ -32,9 +42,11 @@
 
 **executor**: Enacts the policies of the project.
 
-**drafter**: Maintains the contract as directed.
+**consul**: Maintains the contract as directed.
 
-> TODO: **architect**: 
+**controller**: Maintains the inspection to fully cover the contract
+
+**architect**: Designs the strategy to pass the inspection.
 
 ## 3) Project Creation
 
@@ -71,9 +83,19 @@ The following policies deal with interpreting votes on an action and are defined
 **declination**: When an executor shall decline a request.
 
 #### 5.1.3) Amendments
-**approval**: When an executor shall approve an amendment.
+**enactment**: When an executor shall enact an amendment.
 
-**rejection** When an executor shall reject an amendment.
+**repealment** When an executor shall repeal an amendment.
+
+#### 5.1.4) Analyses
+**authorization**: When an executor shall authorize an analysis.
+
+**dismissal**: When an executor shall dismiss an analysis.
+
+#### 5.1.5) Blueprints
+**approval**: When an executor shall approve a blueprint.
+
+**rejection**: When an executor shall reject a blueprint.
 
 ## 6) Motions
 
@@ -135,9 +157,10 @@ defeat a motion
 **amendment**: An object composed of:
 - a mission
 - a revision
-- a register of each director's vote on authorizing the mission
+- a register of each director's vote on enacting the revision
 
-**issue**: The state of the contract at a given point.
+**issue**: An object composed of:
+- the state of the contract at a given point
 
 ### 7.2) Actions
 
@@ -165,7 +188,7 @@ decline a request
 
 draft an amendment
 
-- Roles: `drafter`
+- Roles: `consul`
 - Intent: `To create a revision that fulfills the mission of a directive.`
 - Outcome: `Creates an amendment with the mission, the revision and all votes in the register marked as blank.`
 
@@ -175,143 +198,105 @@ appraise an amendment
 - Intent: `To indicate the director's opinion on the revision meeting the mission and the vision.`
 - Outcome: `Marks the director's vote in the register of the amendment.`
 
-approve an amendment
+enact an amendment
 
 - Roles: `executor`
-- Outcome: `Creates an issue from applying the revision to the contract.`
+- Outcome: `Updates the contract as specified by the revision and creates an issue.`
 
-reject an amendment
+repeal an amendment
 
 - Roles: `executor`
-- Outcome: `Creates a directive with the mission.`
+- Outcome: `Creates a directive with the amendment's mission.`
 
-## Strategy
+## 8) Inspection
 
-> TODO: How does a new issue of the contract get handled?
+### 8.1) Definitions
 
-critique
-: An explanation of why the current strategy does not fully meet the vision.
+**adjustment**: A collection of modifications to the inspection.
 
-petition
-: An object composed of:
-        - a critique
-        - a mission
+**analysis**: An object composed of:
+- an issue
+- an adjustment
+- a register of each consul's vote on authorizing the analysis.
 
-appraisal
-: An object composed of:
-        - a petition
-        - a mapping of each director with their vote on accepting the appraisal
+**program**: An object composed of:
+- an issue
+- the state of the inspection at a given time
 
-directive
-: An object composed of:
-        - a mission
+### 8.2 Actions
 
-adaptation
-: A collection of modifications to a strategy.
+present an analysis
+
+- Roles: `controller`
+- Intent: `To request the inspection be modified in order to cover the issue.`
+- Outcome: `Creates an analysis with the issue, the adjustment, and all votes in the register marked as blank.`
+
+assess an analysis
+
+- Roles: `consul`
+- Intent: `To indicate the consul's opinion on the adjustment sufficiently covering the issue.`
+- Outcome: `Marks the consul's vote in the register of the analysis.`
+
+authorize an analysis
+
+- Roles: `executor`
+- Outcome: `Creates a program with the issue from the analysis and the inspection after applying the adjustment.`
+
+dismiss an analysis
+
+- Roles: `executor`
+- Outcome: `Removes the analysis from consideration and returns its issue to consideration.`
+
+## 9) Strategy
+
+### 9.1) Definitions
+
+**adaptation**: A collection of modifications to a strategy.
         
-blueprint
-: An object composed of
-        - a directive
-        - a revision
-        - a mapping of each director with their vote on confirming the blueprint
+**blueprint**: An object composed of:
+- a program
+- an adaptation
+- a register of each controller's vote on approving the blueprint
 
-edition
-: The state of a strategy at a given time.
+**edition**: An object composed of:
+- a program
+- the state of the strategy at a given time
 
-### Actions
+### 9.2) Actions
 
-submit a petition
+design a blueprint
 
-| Role | any operative |
-| Intent | To state the strategy does not meet the full intent of the vision. |
-| Outcome | Creates an appraisal with the given petition and all votes marked as UNKNOWN. |
+- Roles: `architect`
+- Intent: `To create an adaptation that aligns the strategy with an issue of the contract.`
+- Outcome: `Creates a blueprint with the audit, adaptation and all votes in the register marked as blank.`
 
-endorse an appraisal
+review a blueprint
 
-| Role | director |
-| Intent | To indicate the director believes the critique is valid. |
-| Outcome | Marks the director's vote in the appraisal as YES. |
-
-dispute an appraisal
-
-| Role | director |
-| Intent | To indicate the director believes the critique is not valid. |
-| Outcome | Marks the director's vote in the appraisal as NO. |
-
-accept an appraisal
-
-| Role | executor |
-| Outcome | Creates a directive with the mission. |
-
-decline an appraisal
-
-| Role | executor |
-| Outcome | Removes the petition from consideration. |
-
-draft a blueprint
-
-| Role | designer |
-| Intent | To make a revision that completes a directive. |
-| Outcome | Creates a blueprint with the directive, the revision, and all votes marked as UNKNOWN. |
+- Roles: `controller`
+- Intent: `To indicate the controller's opinion on the blueprint fulfilling the audit.`
+- Outcome: `Marks the controller's vote in the register of the blueprint.`
 
 approve a blueprint
 
-| Role | director |
-| Intent | To indicate the director believes the blueprint successfully meets the mission. |
-| Outcome | Marks the director's vote in the blueprint as YES. |
+- Roles: `executor`
+- Outcome: `Creates an edition with the program from the audit and the state from applying the adaptation to the strategy.`
 
-disapprove a blueprint
+reject a blueprint
 
-| Role | director |
-| Intent | To indicate the director believes the blueprint does not successfully meet the mission. |
-| Outcome | Marks the director's vote in the blueprint as NO. |
+- Roles: `executor`
+- Outcome: `Removes the blueprint from consideration and puts the audit back into consideration.`
 
-validate a blueprint
+## 10) Product
 
-| Role | executor |
-| Outcome | Creates an edition. |
-
-invalidate a blueprint
-
-| Role | executor |
-| Outcome | Creates a directive from the mission. |
-
-## Product
-
-product
-: A result of implementing a strategy.
-
-version
-: The state of a product at a given time.
-
-test
-: A comparison between an expected output and the output generated after applying a given input to a product.
-
-inspection
-: A collection of tests.
-
-RID
-: Report IDentifier
-: A symbol that uniquely identifies a report.
-
-reporter
-: The agent who reported a report.
+### 10.1) Definitions
 
 problem
 : A description of a difference between an expected output and the one given after a test.
 
-challenge
-: An explanation of why a report does not fit the scope of the strategy.
-
 report
 : An object composed of:
-        - id: a RID
-        - reporter: the AID of the agent who reported the report
         - problem: a problem
-        - challenges: a list of challenges
 
-adjustment
-: A collection of modifications to an inspection.
 
 argument
 : An explanation of why the product will not be able to pass a given inspection.
@@ -357,6 +342,9 @@ submission
 : An object composed of:
         - task: the task
         - submitter: the AID of the agent who submitted this
+
+version
+: The state of a product at a given time.
 
 ---
 ```
