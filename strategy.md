@@ -2,11 +2,9 @@
 
 ## 1) Definitions
 
-**product**: The item resulting from the development process.
+**project** The management of the development process.
 
-**project**: The management of the product's development.
-
-**operative**: An entity that influences the development of the product.
+**operative**: An entity that influences the project.
 
 **vote**: Indicates an operative's opinion on a decision.
 
@@ -14,27 +12,23 @@
 
 **register**: A mapping of a list of operatives to their vote.
 
-**vision**: A succinct purpose that describes the intention of the product.
-
-**outcome**: A description of the behavior that occurs when a product is affected in a specified manner.
-
-**requirement**: An outcome that the product is expected to produce.
-
-**contract**: A collection of requirements.
-
-**test**: A comparison between a requirement and the actual outcome of the product.
-
-**inspection**: A collection of tests that cover the entirety of the contract.
-
-**specification**: An explanation of how the product shall pass a portion of the inspection.
-
-**strategy**: A collection of specifications that cover the entirety of the inspection.
-
 **role**: A classification that can be assigned to an operative which defines the actions that an operative is allowed to perform.
 
 **statute**: The conditions which permit modifying the assignment of a specified role to a given operative.
 
 **policy**: The conditions that shall cause an operative to execute a specified action.
+
+**product**: The result of the project.
+
+**vision**: A succinct purpose that describes the intention of the product.
+
+**requirement**: A description of an input and the behavior that the product is expected to exhibit in response.
+
+**contract**: A collection of requirements.
+
+**specification**: An explanation of how the product shall satisfy a requirement.
+
+**strategy**: A collection of specifications that cover the entirety of the contract.
         
 ## 2) Roles
 
@@ -44,9 +38,7 @@
 
 **consul**: Maintains the contract as directed.
 
-**controller**: Maintains the inspection to fully cover the contract
-
-**architect**: Designs the strategy to pass the inspection.
+**architect**: Designs the strategy to satisfy the contract.
 
 ## 3) Project Creation
 
@@ -87,15 +79,15 @@ The following policies deal with interpreting votes on an action and are defined
 
 **repealment** When an executor shall repeal an amendment.
 
-#### 5.1.4) Analyses
-**authorization**: When an executor shall authorize an analysis.
-
-**dismissal**: When an executor shall dismiss an analysis.
-
-#### 5.1.5) Blueprints
+#### 5.1.4) Blueprints
 **approval**: When an executor shall approve a blueprint.
 
 **rejection**: When an executor shall reject a blueprint.
+
+#### 5.1.5) Analyses
+**authorization**: When an executor shall authorize an analysis.
+
+**dismissal**: When an executor shall dismiss an analysis.
 
 ## 6) Motions
 
@@ -103,27 +95,24 @@ The following policies deal with interpreting votes on an action and are defined
 
 **alteration**: a collection of modifications to the statutes, policies, and/or vision of the project.
 
-**premise**: an explanation of what issue an alteration intends to resolve
-
-**correction**: an object composed of:
-- a premise
-- an alteration
+**premise**: an explanation of what issue an alteration intends to resolve.
 
 **motion**: an object composed of:
-- a correction
-- a register of each director's vote on adopting the motion
+- a premise
+- an alteration
+- a register of each director's vote on weighing the motion
 
 ### 6.2) Actions
 
 The following actions related to a motion may be performed:
 
-propose a correction
+propose a motion
 
 - Roles: `director`
 - Intent: `To improve the statutes, policies or vision of the project.`
-- Outcome: `Creates a motion with the correction and all votes in its register marked as blank.`
+- Outcome: `Creates a motion with a premise and alteration and all votes in its register marked as blank.`
 
-weigh on a motion
+weigh a motion
 
 - Roles: `director`
 - Intent: `To indicate the director's opinion on the correction improving the project.`
@@ -143,54 +132,54 @@ defeat a motion
 
 ### 7.1) Definitions
 
-**mission**: An explanation of a desired change to the contract.
+**objective**: An explanation why the contract needs to be modified.
 
-**request**: An object composed of:
-- a mission
-- a register of each director's vote on authorizing the mission
+**petition**: An object composed of:
+- an objective
+- a register of each director's vote on judging the petition
 
 **directive**: An object composed of:
-- a mission
+- an objective
 
 **revision**: A collection of modifications to a contract.
 
 **amendment**: An object composed of:
-- a mission
+- an objective
 - a revision
-- a register of each director's vote on enacting the revision
+- a register of each director's vote on appraising the amendment
 
-**issue**: An object composed of:
+**version**: An object composed of:
 - the state of the contract at a given point
 
 ### 7.2) Actions
 
-introduce a mission
+introduce a petition
 
 - Roles: `any`
 - Intent: `To request the contract be modified to more fully meet the vision.`
-- Outcome: `Creates a request with the mission and all votes in its register marked as blank.`
+- Outcome: `Creates a petition with the objective and all votes in its register marked as blank.`
 
-judge a request
+judge a petition
 
 - Roles: `director`
-- Intent: `To indicate the director's opinion on the validity of the mission.`
-- Outcome: `Marks the director's vote in the register of the request.`
+- Intent: `To indicate the director's opinion on the validity of the objective.`
+- Outcome: `Marks the director's vote in the register of the petition.`
 
-accept a request
-
-- Roles: `executor`
-- Outcome: `Creates a directive with the mission of the request.`
-
-decline a request
+accept a petition
 
 - Roles: `executor`
-- Outcome: `Removes the request from consideration.`
+- Outcome: `Creates a directive with the mission of the petition.`
+
+decline a petition
+
+- Roles: `executor`
+- Outcome: `Removes the petition from consideration.`
 
 draft an amendment
 
 - Roles: `consul`
-- Intent: `To create a revision that fulfills the mission of a directive.`
-- Outcome: `Creates an amendment with the mission, the revision and all votes in the register marked as blank.`
+- Intent: `To create a revision that fulfills the objective of a directive.`
+- Outcome: `Creates an amendment with the objective, the revision and all votes in the register marked as blank.`
 
 appraise an amendment
 
@@ -201,60 +190,21 @@ appraise an amendment
 enact an amendment
 
 - Roles: `executor`
-- Outcome: `Updates the contract as specified by the revision and creates an issue.`
+- Outcome: `Updates the contract as specified by the revision and creates a version.`
 
 repeal an amendment
 
 - Roles: `executor`
 - Outcome: `Creates a directive with the amendment's mission.`
 
-## 8) Inspection
+## 8) Strategy
 
 ### 8.1) Definitions
-
-**adjustment**: A collection of modifications to the inspection.
-
-**analysis**: An object composed of:
-- an issue
-- an adjustment
-- a register of each consul's vote on authorizing the analysis.
-
-**program**: An object composed of:
-- an issue
-- the state of the inspection at a given time
-
-### 8.2 Actions
-
-present an analysis
-
-- Roles: `controller`
-- Intent: `To request the inspection be modified in order to cover the issue.`
-- Outcome: `Creates an analysis with the issue, the adjustment, and all votes in the register marked as blank.`
-
-assess an analysis
-
-- Roles: `consul`
-- Intent: `To indicate the consul's opinion on the adjustment sufficiently covering the issue.`
-- Outcome: `Marks the consul's vote in the register of the analysis.`
-
-authorize an analysis
-
-- Roles: `executor`
-- Outcome: `Creates a program with the issue from the analysis and the inspection after applying the adjustment.`
-
-dismiss an analysis
-
-- Roles: `executor`
-- Outcome: `Removes the analysis from consideration and returns its issue to consideration.`
-
-## 9) Strategy
-
-### 9.1) Definitions
 
 **adaptation**: A collection of modifications to a strategy.
         
 **blueprint**: An object composed of:
-- a program
+- an amendment
 - an adaptation
 - a register of each controller's vote on approving the blueprint
 
@@ -262,18 +212,18 @@ dismiss an analysis
 - a program
 - the state of the strategy at a given time
 
-### 9.2) Actions
+### 8.2) Actions
 
 design a blueprint
 
 - Roles: `architect`
-- Intent: `To create an adaptation that aligns the strategy with an issue of the contract.`
-- Outcome: `Creates a blueprint with the audit, adaptation and all votes in the register marked as blank.`
+- Intent: `To create an adaptation that aligns the strategy with an amendment of the contract.`
+- Outcome: `Creates a blueprint with the amendment, adaptation and all votes in the register marked as blank.`
 
 review a blueprint
 
 - Roles: `controller`
-- Intent: `To indicate the controller's opinion on the blueprint fulfilling the audit.`
+- Intent: `To indicate the controller's opinion on the blueprint fulfilling the amendment.`
 - Outcome: `Marks the controller's vote in the register of the blueprint.`
 
 approve a blueprint
@@ -343,7 +293,7 @@ submission
         - task: the task
         - submitter: the AID of the agent who submitted this
 
-version
+version (change to release)
 : The state of a product at a given time.
 
 ---
@@ -401,5 +351,60 @@ Any developer can perform the following actions on a task:
                 - task: the task
                 - submitter: the submitter
 An executor shall perform the inspection on the product with the patch applied. If the inspection passes, the executorshall certify the submission, which applies the patch to the product to create a new version. Otherwise, the executor shall reject the submission, which appends a defect to the task and deletes the submission (leaving the task).
+
+APPENDIX
+
+**piece**: A part of the product that, by itself, meets a specification.
+
+The following table shows the relation of the different entities in a project.
+| Single  | requirement | specification | piece |
+| Collection | contract | strategy | product |
+| Modifications | revision | adaptation | patch |
+| State | version | edition | release |
+
+
+
+## 8) Inspection
+
+### 8.1) Definitions
+
+**test**: A comparison between a requirement and the actual outcome of the product.
+
+**inspection**: A collection of tests that cover the entirety of the contract.
+
+**adjustment**: A collection of modifications to the inspection.
+
+**analysis**: An object composed of:
+- an issue
+- an adjustment
+- a register of each consul's vote on authorizing the analysis.
+
+**program**: An object composed of:
+- an issue
+- the state of the inspection at a given time
+
+### 8.2 Actions
+
+present an analysis
+
+- Roles: `controller`
+- Intent: `To request the inspection be modified in order to cover the issue.`
+- Outcome: `Creates an analysis with the issue, the adjustment, and all votes in the register marked as blank.`
+
+assess an analysis
+
+- Roles: `consul`
+- Intent: `To indicate the consul's opinion on the adjustment sufficiently covering the issue.`
+- Outcome: `Marks the consul's vote in the register of the analysis.`
+
+authorize an analysis
+
+- Roles: `executor`
+- Outcome: `Creates a program with the issue from the analysis and the inspection after applying the adjustment.`
+
+dismiss an analysis
+
+- Roles: `executor`
+- Outcome: `Removes the analysis from consideration and returns its issue to consideration.`
 
 TODO How to close/archive a project.
