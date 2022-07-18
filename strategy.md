@@ -6,12 +6,6 @@
 
 **operative**: An entity that influences the project.
 
-**vote**: Indicates an operative's opinion on a decision.
-
-**blank**: Indicates an operative's vote is not yet known.
-
-**register**: A mapping of a list of operatives to their vote.
-
 **role**: A classification that can be assigned to an operative which defines the actions that an operative is allowed to perform.
 
 **statute**: The conditions which permit modifying the assignment of a specified role to a given operative.
@@ -29,6 +23,12 @@
 **specification**: An explanation of how the product shall satisfy a requirement.
 
 **strategy**: A collection of specifications that cover the entirety of the contract.
+
+**vote**: Indicates an operative's opinion on a decision.
+
+**blank**: Indicates an operative's vote is not yet known.
+
+**register**: A mapping of a list of operatives to their vote.
         
 ## 2) Roles
 
