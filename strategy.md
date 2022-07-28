@@ -1,73 +1,71 @@
 # Partite
 
-## 1) Definitions
+## I) Definitions
 
-**project**: The management of the development process.
+operative
+: An entity that influences the project.
 
-**operative**: An entity that influences the project.
+role
+: A classification that can be assigned to an operative which defines the actions that an operative is allowed to perform.
 
-**role**: A classification that can be assigned to an operative which defines the actions that an operative is allowed to perform.
+statute
+: The conditions which permit modifying the assignment of a specified role to a given operative.
 
-**statute**: The conditions which permit modifying the assignment of a specified role to a given operative.
+policy
+: The conditions that shall cause an operative to execute a specified action.
 
-**policy**: The conditions that shall cause an operative to execute a specified action.
+product
+: A result of completing the project.
 
-**product**: The result of the project.
+vision
+: A succinct purpose that describes the intention of the project.
 
-**vision**: A succinct purpose that describes the intention of the product.
+requirement
+: A description of the behavior that a product is expected to exhibit in response to a given input.
 
-**requirement**: A description of an input and the behavior that the product is expected to exhibit in response.
+contract
+: The collection of requirements that encompass the project.
 
-**contract**: A collection of requirements.
+specification
+: An explanation of how a product shall satisfy a requirement.
 
-**specification**: An explanation of how the product shall satisfy a requirement.
+strategy
+: A collection of specifications that cover the entirety of the contract.
 
-**strategy**: A collection of specifications that cover the entirety of the contract.
+vote
+: Indicates an operative's opinion on a decision.
 
-**vote**: Indicates an operative's opinion on a decision.
+blank
+: Indicates an operative's vote is not yet known.
 
-**blank**: Indicates an operative's vote is not yet known.
-
-**register**: A mapping of a list of operatives to their vote.
+register
+: A mapping of a list of operatives to their vote.
         
-## 2) Roles
+## II) Roles
 
-**director**: Guides the direction of the project.
+1) The following roles shall exist:
+        a) director: Guides the direction of the project.
+        b) executor: Enacts the policies of the project.
+        c) consul: Maintains the contract as directed.
+        d) architect: Ensures the strategy satisfies the contract.
+2) Each role shall have 1 statute for its appointment and 1 statute for its dismissal.
+3) Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
 
-**executor**: Enacts the policies of the project.
+## III) Project Creation
 
-**consul**: Maintains the contract as directed.
+1) In order to create a project, one or more operatives shall establish and agree on the following:
+        a) The vision of the project.
+        b) The appointment and dismissal statutes for each role.
+        c) Each of the project's policies.
 
-**architect**: Designs the strategy to satisfy the contract.
+## IV) Policies
 
-## 3) Project Creation
+1) A project shall provide the ability to define the following pairs of policies that define how the executor responds to votes.
+        a) Motions
+                i) adoption: When an executor shall adopt a motion.
+                ii) defeat: When an executor shall defeat a motion.
 
-In order to create a project, one or more operatives shall establish and agree on the following:
 
-1. The appointment of the director role to each of the founding operatives.
-2. The vision of the project.
-3. The appointment and dismissal statutes for each role.
-4. Each of the project's policies.
-5. The appointment of the executor role to at least 1 active operative.
-
-## 4) Statutes
-
-Each role shall have 1 statute for its appointment and 1 statute for its dimissal.
-
-### 4.1) Resignation
-
-Any operative shall be able to dismiss themselves from any of their current roles.
-
-## 5) Policies
-
-### 5.1) Voting
-
-The following policies deal with interpreting votes on an action and are defined in pairs. For each pair, the conditions of one policy must have no overlap with the conditions of the other policy.
-
-#### 5.1.1) Motions
-**adoption**: When an executor shall adopt a motion.
-
-**defeat**: When an executor shall defeat a motion.
 
 #### 5.1.2) Requests
 **acceptance**: When an executor shall accept a request.
@@ -88,6 +86,7 @@ The following policies deal with interpreting votes on an action and are defined
 **authorization**: When an executor shall authorize an analysis.
 
 **dismissal**: When an executor shall dismiss an analysis.
+2) For each pair of policies, the conditions of one policy must have no overlap with the conditions of the other policy.
 
 ## 6) Motions
 
