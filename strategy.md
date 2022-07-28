@@ -2,7 +2,7 @@
 
 ## 1) Definitions
 
-**project** The management of the development process.
+**project**: The management of the development process.
 
 **operative**: An entity that influences the project.
 
