@@ -1,9 +1,31 @@
 # Partite
 
-## I) Definitions
+## I) General
+
+vision
+: A succinct purpose that describes the intention of the project.
+
+requirement
+: A description of the behavior to a given set of inputs that fulfills the vision.
+
+contract
+: The collection of requirements enacted by the project.
+
+specification
+: An explanation of how one or more requirements shall be satisfied.
+
+strategy
+: A collection of specifications that cover the entirety of the contract.
+: Any number of strategies may be defined for the contract.
+
+product
+: A result of executing a strategy.
+: Any number of products may be created for a strategy.
+        
+## II) Roles
 
 operative
-: An entity that influences the project.
+: An entity that acts on the project.
 
 role
 : A classification that can be assigned to an operative which defines the actions that an operative is allowed to perform.
@@ -11,190 +33,83 @@ role
 statute
 : The conditions which permit modifying the assignment of a specified role to a given operative.
 
+1) The following roles shall exist:
+  - a) director: guides the direction of the project.
+  - b) consul: maintains the contract of the project as directed.
+  - c) architect: ensures a strategy satisfies the contract.
+  - d) developer: creates a product that executes a strategy.
+2) Each role shall have 1 statute for its appointment and 1 statute for its dismissal.
+3) **Resignation:** Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
+
+## III) Policies
+
 policy
-: The conditions that shall cause an operative to execute a specified action.
-
-product
-: A result of completing the project.
-
-vision
-: A succinct purpose that describes the intention of the project.
-
-requirement
-: A description of the behavior that a product is expected to exhibit in response to a given input.
-
-contract
-: The collection of requirements that encompass the project.
-
-specification
-: An explanation of how a product shall satisfy a requirement.
-
-strategy
-: A collection of specifications that cover the entirety of the contract.
+: A defined set of conditions that, when they occur, shall immediately result in a specified action.
 
 vote
-: Indicates an operative's opinion on a decision.
+: An act of deciding if an action shall be taken.
+: The outcomes of a vote shall be one of the following:
+  - AFFIRMED: the action shall be taken
+  - UNAFFIRMED: the action shall not be taken
 
-blank
-: Indicates an operative's vote is not yet known.
+ballot
+: A declaration of an operative's opinion on a vote.
+: A ballot shall be one of the following options: 
+  - AGREE: the operative desires the action be done
+  - DENY: the operative desires the action not be done
 
-register
-: A mapping of a list of operatives to their vote.
-        
-## II) Roles
+1) Each type of vote described in this contract shall have a policy that defines how a vote is initiated and how the ballots for a given vote shall determine the decision.
 
-1) The following roles shall exist:
-        a) director: Guides the direction of the project.
-        b) executor: Enacts the policies of the project.
-        c) consul: Maintains the contract as directed.
-        d) architect: Ensures the strategy satisfies the contract.
-2) Each role shall have 1 statute for its appointment and 1 statute for its dismissal.
-3) Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
+## IV) Motions
 
-## III) Project Creation
+premise
+: An explanation of why the statutes, policies, and/or vision of the project should be improved.
 
-1) In order to create a project, one or more operatives shall establish and agree on the following:
-        a) The vision of the project.
-        b) The appointment and dismissal statutes for each role.
-        c) Each of the project's policies.
+docket
+: The list of accepted premises.
 
-## IV) Policies
+alteration
+: A collection of modifications to the statutes, policies, and/or vision of the project.
 
-1) A project shall provide the ability to define the following pairs of policies that define how the executor responds to votes.
-        a) Motions
-                i) adoption: When an executor shall adopt a motion.
-                ii) defeat: When an executor shall defeat a motion.
-
-
-
-#### 5.1.2) Requests
-**acceptance**: When an executor shall accept a request.
-
-**declination**: When an executor shall decline a request.
-
-#### 5.1.3) Amendments
-**enactment**: When an executor shall enact an amendment.
-
-**repealment** When an executor shall repeal an amendment.
-
-#### 5.1.4) Blueprints
-**approval**: When an executor shall approve a blueprint.
-
-**rejection**: When an executor shall reject a blueprint.
-
-#### 5.1.5) Analyses
-**authorization**: When an executor shall authorize an analysis.
-
-**dismissal**: When an executor shall dismiss an analysis.
-2) For each pair of policies, the conditions of one policy must have no overlap with the conditions of the other policy.
-
-## 6) Motions
-
-### 6.1) Definitions
-
-**alteration**: a collection of modifications to the statutes, policies, and/or vision of the project.
-
-**premise**: an explanation of what issue an alteration intends to resolve.
-
-**motion**: an object composed of:
-- a premise
+motion
+: An object composed of:
+- a list of premises
 - an alteration
-- a register of each director's vote on weighing the motion
 
-### 6.2) Actions
+1) Any director may create a premise.
+2) Any director may submit a ballot for a vote on accepting a premise.
+3) If the outcome of a vote to accept a premise is AFFIRMED, the premise is added to the docket.
+4) Any director may create a motion that contains one or more of the premises in the docket.
+5) Any director may submit a ballot for a vote on adopting a motion.
+6) If the outcome of a vote to adopt a motion is AFFIRMED, each premise in the motion is removed from the docket and the modifications are applied.
 
-The following actions related to a motion may be performed:
+## V) Contract
 
-propose a motion
+objective
+: An explanation of why the contract should be modified.
 
-- Roles: `director`
-- Intent: `To improve the statutes, policies or vision of the project.`
-- Outcome: `Creates a motion with a premise and alteration and all votes in its register marked as blank.`
+agenda
+: A list of confirmed objectives.
 
-weigh a motion
+revision
+: A collection of modifications to a contract.
 
-- Roles: `director`
-- Intent: `To indicate the director's opinion on the correction improving the project.`
-- Outcome: `Marks the director's vote in the motion.` 
-
-adopt a motion
-
-- Roles: `executor`
-- Outcome: `Modifies the statutes, policies and/or vision of the project as specified by the alteration.`
-
-defeat a motion
-
-- Roles: `executor`
-- Outcome: `Removes the motion from consideration.`
-
-## 7) Contract
-
-### 7.1) Definitions
-
-**objective**: An explanation why the contract needs to be modified.
-
-**petition**: An object composed of:
-- an objective
-- a register of each director's vote on judging the petition
-
-**directive**: An object composed of:
-- an objective
-
-**revision**: A collection of modifications to a contract.
-
-**amendment**: An object composed of:
+amendment
+: An object composed of:
 - an objective
 - a revision
-- a register of each director's vote on appraising the amendment
 
-**version**: An object composed of:
-- the state of the contract at a given point
+version
+: An object composed of:
+- the contract at a given time
+- a name
 
-### 7.2) Actions
-
-introduce a petition
-
-- Roles: `any`
-- Intent: `To request the contract be modified to more fully meet the vision.`
-- Outcome: `Creates a petition with the objective and all votes in its register marked as blank.`
-
-judge a petition
-
-- Roles: `director`
-- Intent: `To indicate the director's opinion on the validity of the objective.`
-- Outcome: `Marks the director's vote in the register of the petition.`
-
-accept a petition
-
-- Roles: `executor`
-- Outcome: `Creates a directive with the mission of the petition.`
-
-decline a petition
-
-- Roles: `executor`
-- Outcome: `Removes the petition from consideration.`
-
-draft an amendment
-
-- Roles: `consul`
-- Intent: `To create a revision that fulfills the objective of a directive.`
-- Outcome: `Creates an amendment with the objective, the revision and all votes in the register marked as blank.`
-
-appraise an amendment
-
-- Roles: `director`
-- Intent: `To indicate the director's opinion on the revision meeting the mission and the vision.`
-- Outcome: `Marks the director's vote in the register of the amendment.`
-
-enact an amendment
-
-- Roles: `executor`
-- Outcome: `Updates the contract as specified by the revision and creates a version.`
-
-repeal an amendment
-
-- Roles: `executor`
-- Outcome: `Creates a directive with the amendment's mission.`
+1) Any operative may create an objective.
+2) Any director may submit a ballot for a vote on ratifying an objective.
+3) If the outcome of a vote to ratify an objective is AFFIRMED, the objective is added to the agenda.
+4) Any consul may create an amendment that contains an objective from the agenda.
+5) Any director may submit a ballot for a vote on enacting an amendment.
+6) If the outcome of a vote to enact an amendment is AFFIRMED, the objective is removed from the agenda, the revision is applied, and a version is created.
 
 ## 8) Strategy
 
@@ -234,6 +149,17 @@ reject a blueprint
 
 - Roles: `executor`
 - Outcome: `Removes the blueprint from consideration and puts the audit back into consideration.`
+
+```
+These shall be moved to their respective sections.
+1) A project shall have defined the following pairs of policies that define how the executor responds to votes.
+  - d) Blueprints
+    + i) approval: When an executor shall approve a blueprint.
+    + ii) rejection: When an executor shall reject a blueprint.
+  - e) Analyses
+    + i) endorsement: When an executor shall endorse an analysis.
+    + ii) refusal: When an executor shall refuse an analysis.
+```
 
 ## 10) Product
 
@@ -406,4 +332,13 @@ dismiss an analysis
 - Roles: `executor`
 - Outcome: `Removes the analysis from consideration and returns its issue to consideration.`
 
-TODO How to close/archive a project.
+```
+How to close/archive a project.
+How to divide a project into sub projects.
+Suggestions for voting:
+- how shall the action be shared, discussed, and modified
+- should the initial submitter be allowed to vote
+- include a time frame so that votes cannot be dragged out
+- consider "blank" ballots where an operative does not submit a ballot
+Rules for the name - perhaps semantic versioning?
+```
