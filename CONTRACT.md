@@ -28,18 +28,21 @@ operative
 : An entity that acts on the project.
 
 role
-: A classification that can be assigned to an operative which defines the actions that an operative is allowed to perform.
+: A classification that can be appointed to an operative which defines the actions that an operative is allowed to perform.
 
 statute
 : The conditions which permit modifying the assignment of a specified role to a given operative.
 
 1) The following roles shall exist:
-  - a) director: guides the direction of the project.
-  - b) consul: maintains the contract of the project as directed.
-  - c) architect: ensures a strategy satisfies the contract.
-  - d) developer: creates a product that executes a strategy.
+  - a) director
+  - b) consul
+  - c) inspector
+  - d) architect
+  - e) developer
+  - f) member
 2) Each role shall have 1 statute for its appointment and 1 statute for its dismissal.
 3) **Resignation:** Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
+4) All operatives shall not be able to perform any actions that are not explictly given to one of their appointed roles.
 
 ## III) Policies
 
@@ -64,9 +67,10 @@ ballot
 
 premise
 : An explanation of why the statutes, policies, and/or vision of the project should be improved.
+: It can be accepted to indicate it is desirable that the premise be resolved.
 
 docket
-: The list of accepted premises.
+: A list of accepted premises.
 
 alteration
 : A collection of modifications to the statutes, policies, and/or vision of the project.
@@ -75,47 +79,101 @@ motion
 : An object composed of:
 - a list of premises
 - an alteration
+: It can be adopted to indicate the alteration shall be applied in order to resolve the list of premises.
 
-1) Any director may create a premise.
-2) **Premise Acceptance:** Any director may submit a ballot for a vote on accepting a premise.
-3) If a premise acceptance is affirmed, the premise is added to the docket.
-4) Any director may create a motion that contains one or more of the premises in the docket.
-5) **Motion Adoption:** Any director may submit a ballot for a vote on adopting a motion.
-6) If a motion adoption is affirmed, each premise in the motion is removed from the docket and the modifications are applied.
+1) A vote shall decide the following actions:
+  - a) the acceptance of a premise
+  - b) the adoption of a motion
+2) If a premise acceptance is affirmed, the premise shall be added to the docket.
+3) If a motion adoption is affirmed, each premise in the motion is removed from the docket and the alteration is applied.
 
 ## V) Contract
 
 objective
 : An explanation of why the contract should be modified.
+: It can be ratified to indicate it is desirable that the objective be resolved.
 
 agenda
-: A list of confirmed objectives.
+: A list of ratified objectives.
 
-revision
+edit
 : A collection of modifications to a contract.
 
 amendment
 : An object composed of:
 - an objective
-- a revision
+- an edit
+: It can be enacted to indicate the edit shall be applied to the contract in order to resolve the objective.
 
-version
+revision
 : An object composed of:
-- the revision that created the version
+- the edit that created the version
 - the contract at a given time
 - a name
 
-1) Any operative may create an objective.
-2) **Objective Ratification:** Any director may submit a ballot for a vote on ratifying an objective.
-3) If an objective ratification is affirmed, the objective is added to the agenda.
-4) Any consul may create an amendment that contains an objective from the agenda.
-5) **Amendment Enactment:** Any director may submit a ballot for a vote on enacting an amendment.
-6) If an amendment enactment is affirmed, the objective is removed from the agenda, the revision is applied, and a version is created.
+1) A vote shall decide the following actions:
+  - a) a ratification of an objective
+  - b) an enactment of an amendment
+2) If an objective ratification is affirmed, the objective is added to the agenda.
+6) If an amendment enactment is affirmed, the objective is removed from the agenda, the edit is applied, and a revision is created.
 
-## VI) Strategy
+## Directors
+
+1) Any director may create the following objects:
+  - a) a premise
+  - b) a motion that contains 1 or more of the premises in the docket.
+2) Any director may tender a ballot for the following votes:
+  - a) accepting a premise
+  - b) adopting a motion
+  - c) ratifying an objective
+  - d) enacting an amendment
+
+## Consuls
+
+1) Any consul may create an amendment that contains an objective from the agenda.
+
+## Members
+
+1) Any member may create an objective.
+
+## VI) Analysis
+
+submission
+: An object composed of:
+- a revision
+- a version
+
+inspection
+: An object composed of:
+- a submission
+- a record of a version's behavior when the set of inputs in a requirement are applied
+- an indication if the version's behavior met the expectations of the requirement
+
+analysis
+: An object composed of:
+- a submission
+- a collection of inspections for the given revision and version
+
+program
+: A collection of analyses that are incomplete.
+
+report
+: An object composed of:
+- an analysis
+- a date-timestamp
+
+1) Any developer may create a submission.
+2) **Submission Endorsement:** Any developer may submit a ballot for a vote on endorsing a submission.
+3) If a submission endorsement is affirmed, the submission is added to a new analysis and added to the program.
+4) Any investigator may create an inspection for an analysis in the program.
+5) **Inspection Certification:** Any investigator may submit a ballot for a vote on certifying an inspection.
+6) If an inspection certification is affirmed, the inspection is added to its analysis.
+7) When an inspection is added to an analysis, if the inspections in the analysis cover the entire contract, the analysis is removed from the program and a report is created.
+
+## VII) Strategy
 
 flaw
-: An explanation of how the strategy does not fulfill the contract.
+: An explanation of how a strategy does not fulfill the contract.
 
 plan
 : A list of flaws.
@@ -134,73 +192,54 @@ edition
 - the state of the strategy at a given time
 - a name
 
-1) When a version is created, a flaw shall be created for fulfilling the new version and added to the plan.
+1) When a revision is created, a flaw shall be created for fulfilling the new revision and added to the plan.
 2) Any operative may create a flaw.
-3) **Flaw Confirmation:** Any consul may submit a ballot for a vote on confirming a flaw.
+3) **Flaw Confirmation:** Any architect may submit a ballot for a vote on confirming a flaw.
 4) If a flaw confirmation is affirmed, the flaw is added to the plan.
-5) Any designer may create a blueprint that contains a flaw from the plan.
-6) **Blueprint Approval:** Any consul may submit a ballot for a vote on approving a blueprint.
+5) Any architect may create a blueprint that contains a flaw from the plan.
+6) **Blueprint Approval:** Any architect may submit a ballot for a vote on approving a blueprint.
 7) If a blueprint approval is affirmed, the flaw is removed from the plan, the adaptation is applied, and an edition is created.
 
-## 10) Product
+## VIII) Product
 
-### 10.1) Definitions
-
-problem
-: A description of a difference between an expected output and the one given after a test.
-
-report
-: An object composed of:
-        - problem: a problem
-
-
-argument
-: An explanation of why the product will not be able to pass a given inspection.
-
-issue
-: An object composed of:
-        - report: the report
-        - adjustment: the adjustment
-        - arguments: a list of arguments
-
-inspector
-: An agent who develops the inspection.
+defect
+: A failed inspection
 
 upgrade
 : An object composed of:
-        - edition: the edition
-        - adjustment: the adjustment
-        - arguments: a list of arguments
+- an edition
+- an adaptation
 
-ratifier
-: An agent who ratified an issue or upgrade.
+task
+: An object that is either a defect or upgrade.
+
+tasklist
+: A collection of tasks.
 
 patch
 : A collection of modifications to a product.
 
-defect
-: An explanation of how running an inspection with the given patch did not produce the expected outputs.
-
-task
+proposal
 : An object composed of:
-        - cause: the issue or upgrade from which the task was generated
-        - inspector: the AID of the agent who generated the task
-        - patch: a patch
-        - defects: a list of defects
+- the task
+- a patch
 
-developer
-: An agent who develops the product.
-
-submitter
-: An agent who submitted a submission.
-
-submission
-: An object composed of:
-        - task: the task
-        - submitter: the AID of the agent who submitted this
-
-version (change to release)
+version
 : The state of a product at a given time.
+
+1) When an edition is created, an upgrade shall be created and added to the tasklist.
+2) Any developer may create a proposal containing a task from the tasklist.
+3) **Proposal Authorization:** Any architect can submit a ballot for a vote on authorizing a proposal.
+4) If a proposal authorization is affirmed, the task is removed from the tasklist, the patch is applied, and a version is created.
+
+```
+
+  - a) director: guides the direction of the project.
+  - b) consul: maintains the contract of the project as directed.
+  - c) inspector: tests that a product satisfies the contract
+  - d) architect: ensures a strategy satisfies the contract.
+  - e) developer: creates a product that executes a strategy.
+```
 
 ---
 ```
@@ -258,14 +297,6 @@ Any developer can perform the following actions on a task:
                 - submitter: the submitter
 An executor shall perform the inspection on the product with the patch applied. If the inspection passes, the executorshall certify the submission, which applies the patch to the product to create a new version. Otherwise, the executor shall reject the submission, which appends a defect to the task and deletes the submission (leaving the task).
 
-```
-These shall be moved to their respective sections.
-1) A project shall have defined the following pairs of policies that define how the executor responds to votes.
-  - e) Analyses
-    + i) endorsement: When an executor shall endorse an analysis.
-    + ii) refusal: When an executor shall refuse an analysis.
-```
-
 APPENDIX
 
 **piece**: A part of the product that, by itself, meets a specification.
@@ -278,49 +309,6 @@ The following table shows the relation of the different entities in a project.
 
 
 
-## 8) Inspection
-
-### 8.1) Definitions
-
-**test**: A comparison between a requirement and the actual outcome of the product.
-
-**inspection**: A collection of tests that cover the entirety of the contract.
-
-**adjustment**: A collection of modifications to the inspection.
-
-**analysis**: An object composed of:
-- an issue
-- an adjustment
-- a register of each consul's vote on authorizing the analysis.
-
-**program**: An object composed of:
-- an issue
-- the state of the inspection at a given time
-
-### 8.2 Actions
-
-present an analysis
-
-- Roles: `controller`
-- Intent: `To request the inspection be modified in order to cover the issue.`
-- Outcome: `Creates an analysis with the issue, the adjustment, and all votes in the register marked as blank.`
-
-assess an analysis
-
-- Roles: `consul`
-- Intent: `To indicate the consul's opinion on the adjustment sufficiently covering the issue.`
-- Outcome: `Marks the consul's vote in the register of the analysis.`
-
-authorize an analysis
-
-- Roles: `executor`
-- Outcome: `Creates a program with the issue from the analysis and the inspection after applying the adjustment.`
-
-dismiss an analysis
-
-- Roles: `executor`
-- Outcome: `Removes the analysis from consideration and returns its issue to consideration.`
-
 ```
 How to divide a project into sub projects.
 How to branch projects that are taking separate paths.
@@ -330,4 +318,5 @@ Suggestions for voting:
 - include a time frame so that votes cannot be dragged out
 - consider "blank" ballots where an operative does not submit a ballot
 Rules for the name - perhaps semantic versioning?
+Specifications can be seen as requirements for unit tests. Is there a way to test them?
 ```
