@@ -77,11 +77,11 @@ motion
 - an alteration
 
 1) Any director may create a premise.
-2) Any director may submit a ballot for a vote on accepting a premise.
-3) If the outcome of a vote to accept a premise is AFFIRMED, the premise is added to the docket.
+2) **Premise Acceptance:** Any director may submit a ballot for a vote on accepting a premise.
+3) If a premise acceptance is affirmed, the premise is added to the docket.
 4) Any director may create a motion that contains one or more of the premises in the docket.
-5) Any director may submit a ballot for a vote on adopting a motion.
-6) If the outcome of a vote to adopt a motion is AFFIRMED, each premise in the motion is removed from the docket and the modifications are applied.
+5) **Motion Adoption:** Any director may submit a ballot for a vote on adopting a motion.
+6) If a motion adoption is affirmed, each premise in the motion is removed from the docket and the modifications are applied.
 
 ## V) Contract
 
@@ -101,65 +101,46 @@ amendment
 
 version
 : An object composed of:
+- the revision that created the version
 - the contract at a given time
 - a name
 
 1) Any operative may create an objective.
-2) Any director may submit a ballot for a vote on ratifying an objective.
-3) If the outcome of a vote to ratify an objective is AFFIRMED, the objective is added to the agenda.
+2) **Objective Ratification:** Any director may submit a ballot for a vote on ratifying an objective.
+3) If an objective ratification is affirmed, the objective is added to the agenda.
 4) Any consul may create an amendment that contains an objective from the agenda.
-5) Any director may submit a ballot for a vote on enacting an amendment.
-6) If the outcome of a vote to enact an amendment is AFFIRMED, the objective is removed from the agenda, the revision is applied, and a version is created.
+5) **Amendment Enactment:** Any director may submit a ballot for a vote on enacting an amendment.
+6) If an amendment enactment is affirmed, the objective is removed from the agenda, the revision is applied, and a version is created.
 
-## 8) Strategy
+## VI) Strategy
 
-### 8.1) Definitions
+flaw
+: An explanation of how the strategy does not fulfill the contract.
 
-**adaptation**: A collection of modifications to a strategy.
+plan
+: A list of flaws.
+
+adaptation
+: A collection of modifications to a strategy.
         
-**blueprint**: An object composed of:
-- an amendment
+blueprint
+: An object composed of:
+- a flaw
 - an adaptation
-- a register of each controller's vote on approving the blueprint
 
-**edition**: An object composed of:
-- a program
+edition
+: An object composed of:
+- the adaptation that created the edition
 - the state of the strategy at a given time
+- a name
 
-### 8.2) Actions
-
-design a blueprint
-
-- Roles: `architect`
-- Intent: `To create an adaptation that aligns the strategy with an amendment of the contract.`
-- Outcome: `Creates a blueprint with the amendment, adaptation and all votes in the register marked as blank.`
-
-review a blueprint
-
-- Roles: `controller`
-- Intent: `To indicate the controller's opinion on the blueprint fulfilling the amendment.`
-- Outcome: `Marks the controller's vote in the register of the blueprint.`
-
-approve a blueprint
-
-- Roles: `executor`
-- Outcome: `Creates an edition with the program from the audit and the state from applying the adaptation to the strategy.`
-
-reject a blueprint
-
-- Roles: `executor`
-- Outcome: `Removes the blueprint from consideration and puts the audit back into consideration.`
-
-```
-These shall be moved to their respective sections.
-1) A project shall have defined the following pairs of policies that define how the executor responds to votes.
-  - d) Blueprints
-    + i) approval: When an executor shall approve a blueprint.
-    + ii) rejection: When an executor shall reject a blueprint.
-  - e) Analyses
-    + i) endorsement: When an executor shall endorse an analysis.
-    + ii) refusal: When an executor shall refuse an analysis.
-```
+1) When a version is created, a flaw shall be created for fulfilling the new version and added to the plan.
+2) Any operative may create a flaw.
+3) **Flaw Confirmation:** Any consul may submit a ballot for a vote on confirming a flaw.
+4) If a flaw confirmation is affirmed, the flaw is added to the plan.
+5) Any designer may create a blueprint that contains a flaw from the plan.
+6) **Blueprint Approval:** Any consul may submit a ballot for a vote on approving a blueprint.
+7) If a blueprint approval is affirmed, the flaw is removed from the plan, the adaptation is applied, and an edition is created.
 
 ## 10) Product
 
@@ -277,6 +258,14 @@ Any developer can perform the following actions on a task:
                 - submitter: the submitter
 An executor shall perform the inspection on the product with the patch applied. If the inspection passes, the executorshall certify the submission, which applies the patch to the product to create a new version. Otherwise, the executor shall reject the submission, which appends a defect to the task and deletes the submission (leaving the task).
 
+```
+These shall be moved to their respective sections.
+1) A project shall have defined the following pairs of policies that define how the executor responds to votes.
+  - e) Analyses
+    + i) endorsement: When an executor shall endorse an analysis.
+    + ii) refusal: When an executor shall refuse an analysis.
+```
+
 APPENDIX
 
 **piece**: A part of the product that, by itself, meets a specification.
@@ -333,8 +322,8 @@ dismiss an analysis
 - Outcome: `Removes the analysis from consideration and returns its issue to consideration.`
 
 ```
-How to close/archive a project.
 How to divide a project into sub projects.
+How to branch projects that are taking separate paths.
 Suggestions for voting:
 - how shall the action be shared, discussed, and modified
 - should the initial submitter be allowed to vote
