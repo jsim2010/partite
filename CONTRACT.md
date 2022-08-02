@@ -117,9 +117,70 @@ revision
 2) If an objective ratification is affirmed, the objective is added to the agenda.
 6) If an amendment enactment is affirmed, the objective is removed from the agenda, the edit is applied, and a revision is created.
 
+## VI) Report
+
+submission
+: An object composed of:
+- a revision of a contract
+- a version of a product
+: If can be endorsed to indicate the desire to test that the version satisfies the revision.
+
+inspection
+: An object composed of:
+- a submission
+- a requirement from the revision
+
+program
+: A list of incomplete inspections.
+
+analysis
+: An object composed of:
+- an inspection
+- a record of a version's behavior when the set of inputs in a requirement are applied
+- an statement describing if the version's behavior met the expectations of the requirement
+: It can be certified to confirm that its information is accurate.
+
+report
+: An object composed of:
+- a collection of analyses of the same submission
+
+1) A vote shall decide the following actions:
+  - a) an enodorsement of a submission
+  - b) a certification of an analysis
+2) If a submission endorsement is affirmed, a new inspection with the submission for each requirement in the revision is created and added to the program.
+3) If an analysis certification is affirmed, its inspection is removed from the program and the analysis is added to its respective report.
+
+## VII) Strategy
+
+flaw
+: An explanation of how a strategy does not fulfill the contract.
+: It can be confirmed to indicate the flaw is valid.
+
+plan
+: A list of flaws.
+
+adaptation
+: A collection of modifications to a strategy.
+        
+blueprint
+: An object composed of:
+- a flaw
+- an adaptation
+: It can be approved to indicate the adaptation resolves the flaw.
+
+edition
+: An object composed of:
+- the adaptation that created the edition
+- the state of the strategy at a given time
+- a name
+
+1) When a revision is created, one or more flaws shall be created for fulfilling the new revision and added to the plan.
+2) If a flaw confirmation is affirmed, the flaw is added to the plan.
+3) If a blueprint approval is affirmed, the flaw is removed from the plan, the adaptation is applied, and an edition is created.
+
 ## Directors
 
-1) Any director may create the following objects:
+1) Any director may create:
   - a) a premise
   - b) a motion that contains 1 or more of the premises in the docket.
 2) Any director may tender a ballot for the following votes:
@@ -132,73 +193,28 @@ revision
 
 1) Any consul may create an amendment that contains an objective from the agenda.
 
-## Members
+## Investigators
 
-1) Any member may create an objective.
+1) Any investigator may create an analysis from an inspection in the program.
+2) Any investigator may tender a ballot for the following votes:
+  - a) certifying an analysis
+  - b) approving a blueprint
 
-## VI) Analysis
+## Architects
 
-submission
-: An object composed of:
-- a revision
-- a version
+1) Any architect may create a blueprint using a flaw in the plan.
+2) Any architect may tender a ballot for a vote on confirming a flaw
 
-inspection
-: An object composed of:
-- a submission
-- a record of a version's behavior when the set of inputs in a requirement are applied
-- an indication if the version's behavior met the expectations of the requirement
-
-analysis
-: An object composed of:
-- a submission
-- a collection of inspections for the given revision and version
-
-program
-: A collection of analyses that are incomplete.
-
-report
-: An object composed of:
-- an analysis
-- a date-timestamp
+## Developers
 
 1) Any developer may create a submission.
-2) **Submission Endorsement:** Any developer may submit a ballot for a vote on endorsing a submission.
-3) If a submission endorsement is affirmed, the submission is added to a new analysis and added to the program.
-4) Any investigator may create an inspection for an analysis in the program.
-5) **Inspection Certification:** Any investigator may submit a ballot for a vote on certifying an inspection.
-6) If an inspection certification is affirmed, the inspection is added to its analysis.
-7) When an inspection is added to an analysis, if the inspections in the analysis cover the entire contract, the analysis is removed from the program and a report is created.
+2) Any developer may tender a ballot for a vote on endorsing a submission.
 
-## VII) Strategy
+## Members
 
-flaw
-: An explanation of how a strategy does not fulfill the contract.
-
-plan
-: A list of flaws.
-
-adaptation
-: A collection of modifications to a strategy.
-        
-blueprint
-: An object composed of:
-- a flaw
-- an adaptation
-
-edition
-: An object composed of:
-- the adaptation that created the edition
-- the state of the strategy at a given time
-- a name
-
-1) When a revision is created, a flaw shall be created for fulfilling the new revision and added to the plan.
-2) Any operative may create a flaw.
-3) **Flaw Confirmation:** Any architect may submit a ballot for a vote on confirming a flaw.
-4) If a flaw confirmation is affirmed, the flaw is added to the plan.
-5) Any architect may create a blueprint that contains a flaw from the plan.
-6) **Blueprint Approval:** Any architect may submit a ballot for a vote on approving a blueprint.
-7) If a blueprint approval is affirmed, the flaw is removed from the plan, the adaptation is applied, and an edition is created.
+1) Any member may create:
+  - a) an objective
+  - b) a flaw
 
 ## VIII) Product
 
@@ -232,15 +248,6 @@ version
 3) **Proposal Authorization:** Any architect can submit a ballot for a vote on authorizing a proposal.
 4) If a proposal authorization is affirmed, the task is removed from the tasklist, the patch is applied, and a version is created.
 
-```
-
-  - a) director: guides the direction of the project.
-  - b) consul: maintains the contract of the project as directed.
-  - c) inspector: tests that a product satisfies the contract
-  - d) architect: ensures a strategy satisfies the contract.
-  - e) developer: creates a product that executes a strategy.
-```
-
 ---
 ```
 graph LR
@@ -261,8 +268,6 @@ end
 ```
 
 Any agent can report a report, which initializes a report with the following values:
-        - id: an identifier unique from the RID's of all reports
-        - reporter: the AID of the agent who reported the report
         - problem: blank
         - challenges: empty
 The reporter can perform the following actions on the report:
