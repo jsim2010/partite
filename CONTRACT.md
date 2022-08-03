@@ -178,6 +178,36 @@ edition
 2) If a flaw confirmation is affirmed, the flaw is added to the plan.
 3) If a blueprint approval is affirmed, the flaw is removed from the plan, the adaptation is applied, and an edition is created.
 
+## VIII) Product
+
+defect
+: A failed analysis
+
+upgrade
+: An object composed of:
+- an edition
+
+task
+: An object that is either a defect or upgrade.
+
+tasklist
+: A collection of tasks.
+
+patch
+: A collection of modifications to a product.
+
+proposal
+: An object composed of:
+- the task
+- a patch
+: It can be authorized to indicate the patch resolves the task.
+
+version
+: The state of a product at a given time.
+
+1) When an edition is created, an upgrade shall be created from it and added to the tasklist.
+2) If a proposal authorization is affirmed, the task is removed from the tasklist, the patch is applied, and a version is created.
+
 ## Directors
 
 1) Any director may create:
@@ -202,13 +232,17 @@ edition
 
 ## Architects
 
-1) Any architect may create a blueprint using a flaw in the plan.
-2) Any architect may tender a ballot for a vote on confirming a flaw
+1) Any architect may create:
+  - a) a submmission
+  - b) a blueprint using a flaw in the plan.
+3) Any architect may tender a ballot for the following votes:
+  - a) endorsing a submission
+  - b) confirming a flaw
+  - b) authorizing a proposal
 
 ## Developers
 
-1) Any developer may create a submission.
-2) Any developer may tender a ballot for a vote on endorsing a submission.
+1) Any developer may create a proposal that contains a task from the tasklist.
 
 ## Members
 
@@ -216,56 +250,7 @@ edition
   - a) an objective
   - b) a flaw
 
-## VIII) Product
-
-defect
-: A failed inspection
-
-upgrade
-: An object composed of:
-- an edition
-- an adaptation
-
-task
-: An object that is either a defect or upgrade.
-
-tasklist
-: A collection of tasks.
-
-patch
-: A collection of modifications to a product.
-
-proposal
-: An object composed of:
-- the task
-- a patch
-
-version
-: The state of a product at a given time.
-
-1) When an edition is created, an upgrade shall be created and added to the tasklist.
-2) Any developer may create a proposal containing a task from the tasklist.
-3) **Proposal Authorization:** Any architect can submit a ballot for a vote on authorizing a proposal.
-4) If a proposal authorization is affirmed, the task is removed from the tasklist, the patch is applied, and a version is created.
-
 ---
-```
-graph LR
-        3((begin)) --report--> Report
-        Report --publish--> Issue
-        Report --redact--> 4((end))
-        Issue --ratify--> Task
-        Issue --contend--> Report
-        Edition --bump--> Upgrade
-        Upgrade --authorize--> Task
-        Task --implement--> Submission
-        Task --protest--> fork
-        fork{ } --> Upgrade
-        fork --> Issue
-        Submission --certify--> Version
-        Submission --reject--> Task
-end
-```
 
 Any agent can report a report, which initializes a report with the following values:
         - problem: blank
