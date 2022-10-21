@@ -1,50 +1,20 @@
 # Partite
-
-## I) General
-
-vision
-: A succinct purpose that describes the intention of the project.
-
-requirement
-: A description of the behavior to a given set of inputs that fulfills the vision.
-
-contract
-: The collection of requirements enacted by the project.
-
-specification
-: An explanation of how one or more requirements shall be satisfied.
-
-strategy
-: A collection of specifications that cover the entirety of the contract.
-: Any number of strategies may be defined for the contract.
-
-product
-: A result of executing a strategy.
-: Any number of products may be created for a strategy.
         
-## II) Roles
+## I) Statutes
 
 operative
 : An entity that acts on the project.
 
 role
-: A classification that can be appointed to an operative which defines the actions that an operative is allowed to perform.
+: A classification that can be assigned to an operative which defines the actions that the operative is allowed to perform.
 
 statute
-: The conditions which permit modifying the assignment of a specified role to a given operative.
+: The conditions which permit modifying the assignment of a given role to an operative.
 
-1) The following roles shall exist:
-  - a) director
-  - b) consul
-  - c) inspector
-  - d) architect
-  - e) developer
-  - f) member
-2) Each role shall have 1 statute for its appointment and 1 statute for its dismissal.
-3) **Resignation:** Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
-4) All operatives shall not be able to perform any actions that are not explictly given to one of their appointed roles.
+1) Each role shall have at least 1 statute for its appointment and at least 1 statute for its dismissal.
+2) **Resignation:** Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
 
-## III) Policies
+## II) Policies
 
 policy
 : A defined set of conditions that, when they occur, shall immediately result in a specified action.
@@ -53,17 +23,23 @@ vote
 : An act of deciding if an action shall be taken.
 : The outcomes of a vote shall be one of the following:
   - AFFIRMED: the action shall be taken
-  - UNAFFIRMED: the action shall not be taken
+  - DENIED: the action shall not be taken
 
 ballot
 : A declaration of an operative's opinion on a vote.
 : A ballot shall be one of the following options: 
-  - AGREE: the operative desires the action be done
-  - DENY: the operative desires the action not be done
+  - APPROVE: the operative desires the action be done
+  - DISAPPROVE: the operative desires the action not be done
 
-1) Each type of vote described in this contract shall have a policy that defines how a vote is initiated and how the ballots for a given vote shall determine the decision.
+1) Each type of vote described in this contract shall have a policy that defines:
+  - a) when a vote is initiated
+  - b) when a vote shall be affirmed
+  - c) when a vote shall be denied
 
-## IV) Motions
+## III) Motions
+
+vision
+: A succinct purpose that describes the intention of the project.
 
 premise
 : An explanation of why the statutes, policies, and/or vision of the project should be improved.
@@ -77,7 +53,7 @@ alteration
 
 motion
 : An object composed of:
-- a list of premises
+- a list of 1 or more premises that are currently in the docket
 - an alteration
 : It can be adopted to indicate the alteration shall be applied in order to resolve the list of premises.
 
@@ -87,7 +63,13 @@ motion
 2) If a premise acceptance is affirmed, the premise shall be added to the docket.
 3) If a motion adoption is affirmed, each premise in the motion is removed from the docket and the alteration is applied.
 
-## V) Contract
+## IV) Contract
+
+requirement
+: A description of a behavior that fulfills the vision. It is comprised of a set of inputs and the expected outcome.
+
+contract
+: All of a project's requirements.
 
 objective
 : An explanation of why the contract should be modified.
@@ -101,23 +83,26 @@ edit
 
 amendment
 : An object composed of:
-- an objective
+- an objective from the agenda
 - an edit
 : It can be enacted to indicate the edit shall be applied to the contract in order to resolve the objective.
 
 revision
 : An object composed of:
-- the edit that created the version
-- the contract at a given time
+- the edit that created the revision
+- the contract after the given edit was applied
 - a name
 
 1) A vote shall decide the following actions:
-  - a) a ratification of an objective
-  - b) an enactment of an amendment
+  - a) the ratification of an objective
+  - b) the enactment of an amendment
 2) If an objective ratification is affirmed, the objective is added to the agenda.
-6) If an amendment enactment is affirmed, the objective is removed from the agenda, the edit is applied, and a revision is created.
+3) If an amendment enactment is affirmed, the objective is removed from the agenda and a revision is created.
 
-## VI) Report
+---
+Need to go review everything below
+
+## V) Report
 
 submission
 : An object composed of:
@@ -150,7 +135,13 @@ report
 2) If a submission endorsement is affirmed, a new inspection with the submission for each requirement in the revision is created and added to the program.
 3) If an analysis certification is affirmed, its inspection is removed from the program and the analysis is added to its respective report.
 
-## VII) Strategy
+## VI) Strategy
+
+specification
+: An explanation of how one or more requirements shall be satisfied.
+
+strategy
+: A collection of specifications that cover the entirety of a contract.
 
 flaw
 : An explanation of how a strategy does not fulfill the contract.
@@ -178,7 +169,10 @@ edition
 2) If a flaw confirmation is affirmed, the flaw is added to the plan.
 3) If a blueprint approval is affirmed, the flaw is removed from the plan, the adaptation is applied, and an edition is created.
 
-## VIII) Product
+## VII) Product
+
+product
+: An execution of a strategy.
 
 defect
 : A failed analysis
@@ -208,29 +202,39 @@ version
 1) When an edition is created, an upgrade shall be created from it and added to the tasklist.
 2) If a proposal authorization is affirmed, the task is removed from the tasklist, the patch is applied, and a version is created.
 
-## Directors
+## Roles
+1) The following roles shall exist:
+  - a) director
+  - b) consul
+  - c) inspector
+  - d) architect
+  - e) developer
+  - f) member
+2) All operatives shall not be able to perform any actions that are not explictly given to one of their assigned roles.
+3) 
+### A) Directors
 
-1) Any director may create:
+1) A director may create:
   - a) a premise
-  - b) a motion that contains 1 or more of the premises in the docket.
-2) Any director may tender a ballot for the following votes:
+  - b) a motion
+2) A director may tender a ballot for the following votes:
   - a) accepting a premise
   - b) adopting a motion
   - c) ratifying an objective
   - d) enacting an amendment
 
-## Consuls
+### B) Consuls
 
-1) Any consul may create an amendment that contains an objective from the agenda.
+1) Any consul may create an amendment.
 
-## Investigators
+### C) Investigators
 
 1) Any investigator may create an analysis from an inspection in the program.
 2) Any investigator may tender a ballot for the following votes:
   - a) certifying an analysis
   - b) approving a blueprint
 
-## Architects
+### D) Architects
 
 1) Any architect may create:
   - a) a submmission
@@ -240,11 +244,11 @@ version
   - b) confirming a flaw
   - b) authorizing a proposal
 
-## Developers
+### E) Developers
 
 1) Any developer may create a proposal that contains a task from the tasklist.
 
-## Members
+### F) Members
 
 1) Any member may create:
   - a) an objective
