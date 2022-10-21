@@ -1,1 +1,1 @@
-In order to maximize efficiency and reliability in project development, partite defines processes that specify separate aspects of a project.
+In order to maximize efficiency and reliability in project development, partite defines roles that divide the different processes required for a successful project.
