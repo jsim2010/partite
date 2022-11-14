@@ -19,6 +19,8 @@ reassignment
 statute
 : A condition which must be satisfied prior to a given reassignment of a given role to an operative.
 
+---
+
 1) Each role shall have at least 1 statute defined for its appointment.
 2) **Resignation:** Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
 
