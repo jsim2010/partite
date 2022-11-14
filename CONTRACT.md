@@ -1,64 +1,66 @@
 # Partite
         
-## Project Components
-
-### Statutes
+## Project Definitions
 
 operative
-: An entity that acts on the project.
+: An entity that operates on the project.
 
-role
-: A classification that can be assigned to an operative which defines actions that the operative is allowed to perform.
+policy
+: A condition that when met, triggers the execution of a given operation.
 
-reassignment
-: A modification of a given role for an operative.
-: The possible types of reassignment are:
-  - APPOINTMENT: Adds a role assignment.
-  - DISMISSAL: Removes a role assignment.
+vote
+: A defined process of determining if a given operation shall be executed.
 
-statute
-: A condition which must be satisfied prior to a given reassignment of a given role to an operative.
+action
+: An operation that can only be executed via a vote.
+
+ballot
+: A declaration of a given operative's desire concerning the execution of an action.
 
 ---
 
-1) Each role shall have at least 1 statute defined for its appointment.
-2) **Resignation:** Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
+1) A ballot shall declare one of the following:
+  - a) **Approve:** the operative desires the action be executed
+  - b) **Disapprove:** the operative desires the action not be executed
+2) Each defined action shall have a policy for each of the following operations:
+  - a) **Vote Initiation:** when an operative can tender their ballot for the action
+  - b) **Affirmation:** when the action shall be executed
 
-### 2) Policies
+### Statutes
 
-policy
-: A defined set of conditions that, when they occur, shall immediately result in a specified action.
+role
+: A classification that can be assigned to an actor which defines the actions the actor is allowed to perform.
 
-vote
-: An act of deciding if an action shall be taken.
-: The outcomes of a vote shall be one of the following:
-  - AFFIRMED: the action shall be taken
-  - DENIED: the action shall not be taken
+reassignment
+: A modification of the assignment of a given role to an actor.
 
-ballot
-: A declaration of an operative's opinion on a vote.
-: A ballot shall be one of the following options: 
-  - APPROVE: the operative desires the action be done
-  - DISAPPROVE: the operative desires the action not be done
+statute
+: A condition which must be satisfied prior to a given reassignment 
 
-1) Each type of vote described in this contract shall have a policy that defines:
-  - a) when a vote is initiated
-  - b) when a vote shall be affirmed
-  - c) when a vote shall be denied
+---
 
-## Workflow
+1) The possible types of reassignment shall be:
+  - a) APPOINTMENT: Adds a role assignment.
+  - b) DISMISSAL: Removes a role assignment.
+3) Each role shall have at least 1 statute defined for its appointment.
+4) **Resignation:** Any actor shall be able to dismiss themselves from any of their current roles at any time of their choosing.
 
-### 3) Motions
+
+## Project Outputs
+
+### Vision
 
 vision
 : A succinct purpose that describes the intention of the project.
 
 premise
 : An explanation of why the statutes, policies, and/or vision of the project should be improved.
-: It can be accepted to indicate it is desirable that the premise be resolved.
 
 docket
-: A list of accepted premises.
+: A list of premises whose resolution is desirable.
+
+acceptance
+: An operation that adds a given premise to the docket.
 
 alteration
 : A collection of modifications to the statutes, policies, and/or vision of the project.
@@ -67,12 +69,13 @@ motion
 : An object composed of:
 - a list of 1 or more premises that are currently in the docket
 - an alteration
-: It can be adopted to indicate the alteration shall be applied in order to resolve the list of premises.
 
-1) A vote shall decide the following actions:
+adoption
+: An operation on a motion that removes each of its premises from the docket and applies the alteration to the given project components.
+
+1) The following actions shall be operations:
   - a) the acceptance of a premise
   - b) the adoption of a motion
-2) If a premise acceptance is affirmed, the premise shall be added to the docket.
 3) If a motion adoption is affirmed, each premise in the motion is removed from the docket and the alteration is applied.
 
 ## IV) Contract
