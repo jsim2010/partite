@@ -1,6 +1,8 @@
 # Partite
         
-## I) Statutes
+## Project Components
+
+### Statutes
 
 operative
 : An entity that acts on the project.
@@ -8,14 +10,19 @@ operative
 role
 : A classification that can be assigned to an operative which defines actions that the operative is allowed to perform.
 
+reassignment
+: A modification of a given role for an operative.
+: The possible types of reassignment are:
+  - APPOINTMENT: Adds a role assignment.
+  - DISMISSAL: Removes a role assignment.
+
 statute
-: A condition which permits modifying the assignment of a given role to an operative.
+: A condition which must be satisfied prior to a given reassignment of a given role to an operative.
 
-1) Each role shall have at least 1 statute for its appointment and at least 1 statute for its dismissal.
-2) Upon initialization of a project, any operative shall be able to appoint themselves to any role.
-3) **Resignation:** Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
+1) Each role shall have at least 1 statute defined for its appointment.
+2) **Resignation:** Any operative shall be able to dismiss themselves from any of their current roles at any time of their choosing.
 
-## II) Policies
+### 2) Policies
 
 policy
 : A defined set of conditions that, when they occur, shall immediately result in a specified action.
@@ -37,7 +44,9 @@ ballot
   - b) when a vote shall be affirmed
   - c) when a vote shall be denied
 
-## III) Motions
+## Workflow
+
+### 3) Motions
 
 vision
 : A succinct purpose that describes the intention of the project.
@@ -130,6 +139,8 @@ edition
 - the state of the strategy at a given time
 - a name
 
+`perhaps add a step that formally defines the process of generating flaws from a revision`
+
 1) When a revision is created, one or more flaws shall be created for fulfilling the new revision and added to the plan.
 2) If a flaw confirmation is affirmed, the flaw is added to the plan.
 3) If a blueprint approval is affirmed, the flaw is removed from the plan, the adaptation is applied, and an edition is created.
@@ -208,6 +219,7 @@ report
   - d) architect
   - e) developer
 2) All operatives shall not be able to perform any actions that are not explictly given to one of their assigned roles.
+3) **Founder Appointment:** When a project is created, all operatives responsible for the creation shall be assigned the director role.
 
 ### A) Directors
 
