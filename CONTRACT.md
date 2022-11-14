@@ -1,6 +1,6 @@
 # Partite
         
-## Project Definitions
+## Policies
 
 operative
 : An entity that operates on the project.
@@ -15,36 +15,27 @@ action
 : An operation that can only be executed via a vote.
 
 ballot
-: A declaration of a given operative's desire concerning the execution of an action.
-
----
-
-1) A ballot shall declare one of the following:
-  - a) **Approve:** the operative desires the action be executed
-  - b) **Disapprove:** the operative desires the action not be executed
-2) Each defined action shall have a policy for each of the following operations:
-  - a) **Vote Initiation:** when an operative can tender their ballot for the action
-  - b) **Affirmation:** when the action shall be executed
-
-### Statutes
+: A declaration of a given operative's desire concerning a given vote.
 
 role
-: A classification that can be assigned to an actor which defines the actions the actor is allowed to perform.
+: A classification that can be assigned to an operative which defines the operations the operative is allowed to perform.
 
 reassignment
-: A modification of the assignment of a given role to an actor.
-
-statute
-: A condition which must be satisfied prior to a given reassignment 
+: An action that modifies the assignment of a given role to an operative.
 
 ---
 
-1) The possible types of reassignment shall be:
-  - a) APPOINTMENT: Adds a role assignment.
-  - b) DISMISSAL: Removes a role assignment.
-3) Each role shall have at least 1 statute defined for its appointment.
-4) **Resignation:** Any actor shall be able to dismiss themselves from any of their current roles at any time of their choosing.
-
+1) **Ballot Options**: A ballot shall declare one of the following:
+  - a) *Approve*: the operative desires the action be executed
+  - b) *Disapprove*: the operative desires the action not be executed
+2) **Action Policies**: Each defined action shall have a policy for each of the following operations:
+  - a) *Vote Initiation*: when a vote for the action shall be initiated
+  - b) *Affirmation*: when the action shall be executed
+3) The possible types of reassignment shall be:
+  - a) *Appointment*: Adds a role assignment
+  - b) *Dismissal*: Removes a role assignment
+4) Each role shall have at least 1 policy for its appointment.
+5) **Resignation**: Any operative shall be able to dismiss themselves from any of their current roles at any time.
 
 ## Project Outputs
 
