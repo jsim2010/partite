@@ -1,6 +1,6 @@
 # Partite
         
-## Policies
+## Structure
 
 operative
 : An entity that operates on the project.
@@ -15,7 +15,7 @@ action
 : An operation that can only be executed via a vote.
 
 ballot
-: A declaration of a given operative's desire concerning a given vote.
+: A declaration of a given voter's desire concerning a given vote.
 
 role
 : A classification that can be assigned to an operative which defines the operations the operative is allowed to perform.
@@ -25,87 +25,130 @@ reassignment
 
 ---
 
-1) **Ballot Options**: A ballot shall declare one of the following:
-  - a) *Approve*: the operative desires the action be executed
-  - b) *Disapprove*: the operative desires the action not be executed
-2) **Action Policies**: Each defined action shall have a policy for each of the following operations:
-  - a) *Vote Initiation*: when a vote for the action shall be initiated
-  - b) *Affirmation*: when the action shall be executed
+1) A ballot shall declare one of the following:
+
+   a) *Approve*: the voter desires the action be executed
+   
+   b) *Disapprove*: the voter desires the action not be executed
+2) Each defined action shall have a policy for each of the following operations:
+   
+   a) *Vote Initiation*: when a vote for the action shall be initiated
+   
+   b) *Affirmation*: when the action shall be executed
 3) The possible types of reassignment shall be:
-  - a) *Appointment*: Adds a role assignment
-  - b) *Dismissal*: Removes a role assignment
+   
+   a) *Appointment*: Adds a role assignment
+   
+   b) *Dismissal*: Removes a role assignment
 4) Each role shall have at least 1 policy for its appointment.
 5) **Resignation**: Any operative shall be able to dismiss themselves from any of their current roles at any time.
+6) The following roles shall exist:
+   
+   a) director
+   
+   b) consul
+   
+   c) inspector
+   
+   d) architect
+   
+   e) developer
+7) Each operative shall not be able to execute any operations that are not explictly given to one of their assigned roles.
+8) **Founders**: When a project is created, all operatives responsible for the creation shall be appointed the director role.
+9) A director shall be able to:
+   
+   a) tender a ballot for a reassignment of any role
 
-## Project Outputs
-
-### Vision
+## Vision
 
 vision
-: A succinct purpose that describes the intention of the project.
+: A document containing a succinct purpose that describes the intention of the project.
 
 premise
-: An explanation of why the statutes, policies, and/or vision of the project should be improved.
+: An explanation of why the policies and/or vision of the project should be improved.
 
 docket
-: A list of premises whose resolution is desirable.
+: The list of premises to be resolved.
 
 acceptance
-: An operation that adds a given premise to the docket.
+: An action that adds a given premise to the docket.
 
 alteration
-: A collection of modifications to the statutes, policies, and/or vision of the project.
+: A collection of modifications to the policies and/or vision of the project.
 
 motion
 : An object composed of:
-- a list of 1 or more premises that are currently in the docket
-- an alteration
+  
+  - a set of references to 1 or more premises in the current docket
+  - an alteration
 
 adoption
-: An operation on a motion that removes each of its premises from the docket and applies the alteration to the given project components.
+: An action on a given motion that removes each of its premises from the docket and applies the alteration to the components of the project.
 
-1) The following actions shall be operations:
-  - a) the acceptance of a premise
-  - b) the adoption of a motion
-3) If a motion adoption is affirmed, each premise in the motion is removed from the docket and the alteration is applied.
+---
 
-## IV) Contract
+1) A director shall be able to:
+   
+   a) create a premise
+   
+   b) create a motion
+   
+   c) tender a ballot for an acceptance
+   
+   d) tender a ballot for an adoption
+
+## Contract
 
 requirement
-: A description of a behavior that fulfills the vision. It is comprised of a set of inputs and the expected outcome.
+: An object composed of:
+
+  - a set of inputs
+  - the behavior that fulfills the vision
 
 contract
-: All of a project's requirements.
+: A list containing all requirements of a project.
 
 objective
 : An explanation of why the contract should be modified.
-: It can be ratified to indicate it is desirable that the objective be resolved.
 
 agenda
-: A list of ratified objectives.
+: The list of objectives to be resolved.
+
+ratification
+: An action that adds a given objective to the agenda.
 
 edit
 : A collection of modifications to a contract.
 
 amendment
 : An object composed of:
-- an objective from the agenda
-- an edit
-: It can be enacted to indicate the edit shall be applied to the contract in order to resolve the objective.
+  
+  - a set of references to 1 or more objectives in the agenda
+  - an edit
 
 revision
 : An object composed of:
-- the edit that created the revision
-- the contract after the given edit was applied
-- a name
+  
+  - an amendment
+  - a contract
 
-1) A vote shall decide the following actions:
-  - a) the ratification of an objective
-  - b) the enactment of an amendment
-2) If an objective ratification is affirmed, the objective is added to the agenda.
-3) If an amendment enactment is affirmed, the objective is removed from the agenda and a revision is created.
+enactment
+: An action on a given amendment that removes each of its objectives from the agenda, applies the edit to the contract, then creates a revision with the amendment and the new contract.
 
-## V) Strategy
+---
+
+1) A director shall be able to:
+   
+   a) create an objective
+   
+   b) tender a ballot for a ratification
+   
+   c) tender a ballot for an enactment
+2) A consul shall be able to:
+   
+   a) create an amendment
+
+## IV) Strategy
 
 specification
 : An explanation of how one or more requirements shall be satisfied.
@@ -208,29 +251,6 @@ report
 3) If an analysis certification is affirmed, its inspection is removed from the program and the analysis is added to its respective report.
 
 ## VIII) Roles
-1) The following roles shall exist:
-  - a) director
-  - b) consul
-  - c) inspector
-  - d) architect
-  - e) developer
-2) All operatives shall not be able to perform any actions that are not explictly given to one of their assigned roles.
-3) **Founder Appointment:** When a project is created, all operatives responsible for the creation shall be assigned the director role.
-
-### A) Directors
-
-1) A director may create:
-  - a) a premise
-  - b) a motion
-2) A director may tender a ballot for the following votes:
-  - a) accepting a premise
-  - b) adopting a motion
-  - c) ratifying an objective
-  - d) enacting an amendment
-
-### B) Consuls
-
-1) A consul may create an amendment.
 
 ### C) Investigators
 
@@ -254,7 +274,7 @@ report
 1) A developer may create a proposal that contains a task from the tasklist.
 
 
-An executor shall perform the inspection on the product with the patch applied. If the inspection passes, the executorshall certify the submission, which applies the patch to the product to create a new version. Otherwise, the executor shall reject the submission, which appends a defect to the task and deletes the submission (leaving the task).
+An executor shall perform the inspection on the product with the patch applied. If the inspection passes, the executor shall certify the submission, which applies the patch to the product to create a new version. Otherwise, the executor shall reject the submission, which appends a defect to the task and deletes the submission (leaving the task).
 
 APPENDIX
 
