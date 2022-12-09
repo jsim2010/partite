@@ -1,48 +1,66 @@
 # Partite
-        
-## Structure
 
-operative
-: An entity that operates on the project.
-
-policy
-: A condition that when met, triggers the execution of a given operation.
-
-vote
-: A defined process of determining if a given operation shall be executed.
+## Definitions
 
 action
 : An operation that can only be executed via a vote.
 
-ballot
-: A declaration of a given voter's desire concerning a given vote.
+adjustment
+: A set of modifications to a given standard.
 
-role
-: A classification that can be assigned to an operative which defines the operations the operative is allowed to perform.
+adoption
+: An action that applies a given alteration to a vision.
+
+alteration
+: A set of modifications to a given vision.
+
+assignment
+: A set of roles.
+
+ballot
+: A declaration of a given operative's desire concerning a given vote.
+
+operative
+: An entity that operates on the project and has an assignment.
+
+policy
+: A condition that, when met, triggers the execution of a given operation.
 
 reassignment
-: An action that modifies the assignment of a given role to an operative.
+: An action that modifies a given operative's assignment.
 
----
+role
+: A classification of an operative which defines the operations the operative is eligible to perform.
+
+sanction
+: An action that applies a given adjustment to a standard.
+
+standard
+: A set of policies.
+
+vision
+: A succinct purpose that describes the intention of the project.
+
+vote
+: A defined process that determines if a given operation shall be executed.
+        
+## I) Voting
 
 1) A ballot shall declare one of the following:
 
-   a) *Approve*: the voter desires the action be executed
+   a) *Approval*: the voter desires the action be executed
    
-   b) *Disapprove*: the voter desires the action not be executed
-2) Each defined action shall have a policy for each of the following operations:
+   b) *Disapproval*: the voter desires the action not be executed
+2) The project's standard shall have a a policy defined for each of the following operations for every action defined in the contract (see Appendix A for a list):
    
-   a) *Vote Initiation*: when a vote for the action shall be initiated
+   a) *Vote Initiation*: when ballots for the vote shall be requested from the eligible operatives
    
    b) *Affirmation*: when the action shall be executed
-3) The possible types of reassignment shall be:
    
-   a) *Appointment*: Adds a role assignment
-   
-   b) *Dismissal*: Removes a role assignment
-4) Each role shall have at least 1 policy for its appointment.
-5) **Resignation**: Any operative shall be able to dismiss themselves from any of their current roles at any time.
-6) The following roles shall exist:
+## II) Roles
+
+1) **Resignation**: Any operative shall be able to remove any role from their assignment at any time.
+2) The following roles shall exist:
    
    a) director
    
@@ -53,49 +71,25 @@ reassignment
    d) architect
    
    e) developer
-7) Each operative shall not be able to execute any operations that are not explictly given to one of their assigned roles.
-8) **Founders**: When a project is created, all operatives responsible for the creation shall be appointed the director role.
-9) A director shall be able to:
+3) A given operative shall not be able to execute any operations that are not explictly given to one of the roles in their assignment.
+4) **Founders**: When a project is created, all operatives responsible for the creation shall have the director role added to their assignment.
+
+## Director
+
+1) A director shall be eligible to tender a ballot for the following actions:
+   a) reassignment
+   b) sanction
+   c) adoption
    
-   a) tender a ballot for a reassignment of any role
+## Appendix A) Actions
 
-## Vision
+This is a list of all actions that are defined in this contract.
 
-vision
-: A succinct purpose that describes the intention of the project.
-
-premise
-: An explanation of why the policies and/or vision of the project should be improved.
-
-docket
-: The list of premises to be resolved.
-
-acceptance
-: An action that adds a given premise to the docket.
-
-alteration
-: A collection of modifications to the policies and/or vision of the project.
-
-motion
-: An object composed of:
-  
-  - a non-empty set of premises in the current docket
-  - an alteration
-
-adoption
-: An action on a given motion that removes each of its premises from the docket and applies the alteration to the components of the project.
+1) Reassignment of an operative's roles
+2) Sanction of a standard
+3) Adoption of a vision
 
 ---
-
-1) A director shall be able to:
-   
-   a) create a premise
-   
-   b) create a motion
-   
-   c) tender a ballot for an acceptance
-   
-   d) tender a ballot for an adoption
 
 ## Contract
 
