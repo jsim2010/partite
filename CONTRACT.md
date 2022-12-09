@@ -62,7 +62,7 @@ reassignment
 ## Vision
 
 vision
-: A document containing a succinct purpose that describes the intention of the project.
+: A succinct purpose that describes the intention of the project.
 
 premise
 : An explanation of why the policies and/or vision of the project should be improved.
@@ -79,7 +79,7 @@ alteration
 motion
 : An object composed of:
   
-  - a set of references to 1 or more premises in the current docket
+  - a non-empty set of premises in the current docket
   - an alteration
 
 adoption
@@ -102,14 +102,23 @@ adoption
 requirement
 : An object composed of:
 
-  - a set of inputs
+  - a non-empty set of inputs
   - the behavior that fulfills the vision
 
 contract
 : A list containing all requirements of a project.
 
+edit
+: A collection of modifications to a contract.
+
+revision
+: An object composed of:
+  
+  - a contract after an edit has been applied to it
+  - the edit that was applied
+
 objective
-: An explanation of why the contract should be modified.
+: An explanation of why the contract does not fulfill the vision.
 
 agenda
 : The list of objectives to be resolved.
@@ -117,20 +126,11 @@ agenda
 ratification
 : An action that adds a given objective to the agenda.
 
-edit
-: A collection of modifications to a contract.
-
 amendment
 : An object composed of:
   
-  - a set of references to 1 or more objectives in the agenda
-  - an edit
-
-revision
-: An object composed of:
-  
-  - an amendment
-  - a contract
+  - a non-empty set of objectives in the agenda
+  - an edit intended to resolve the objectives
 
 enactment
 : An action on a given amendment that removes each of its objectives from the agenda, applies the edit to the contract, then creates a revision with the amendment and the new contract.
@@ -154,17 +154,25 @@ specification
 : An explanation of how one or more requirements shall be satisfied.
 
 strategy
-: A collection of specifications that cover the entirety of a contract.
-
-flaw
-: An explanation of how a strategy does not fulfill the contract.
-: It can be confirmed to indicate the flaw is valid.
-
-plan
-: A list of flaws.
+: A collection of specifications that cover the entirety of the contract in a given revision.
 
 adaptation
 : A collection of modifications to a strategy.
+
+edition
+: An object composed of:
+
+  - a strategy after an adaptation has been applied to it
+  - the adaptation that was applied
+
+flaw
+: An explanation of how a given strategy does not fulfill a given contract.
+
+plan
+: A list of flaws to be resolved for a given strategy.
+
+confirmation
+: An action that that adds a given flaw to the plan.
         
 blueprint
 : An object composed of:
@@ -172,17 +180,8 @@ blueprint
 - an adaptation
 : It can be approved to indicate the adaptation resolves the flaw.
 
-edition
-: An object composed of:
-- the adaptation that created the edition
-- the state of the strategy at a given time
-- a name
-
-`perhaps add a step that formally defines the process of generating flaws from a revision`
-
-1) When a revision is created, one or more flaws shall be created for fulfilling the new revision and added to the plan.
-2) If a flaw confirmation is affirmed, the flaw is added to the plan.
-3) If a blueprint approval is affirmed, the flaw is removed from the plan, the adaptation is applied, and an edition is created.
+affirmation:
+: An action on a given blueprint that removes the flaw from the plan, applies the adaptation, and creates an edition.
 
 ## VI) Product
 
@@ -207,8 +206,9 @@ patch
 
 proposal
 : An object composed of:
-- the task
-- a patch
+
+    - the task
+    - a patch
 : It can be authorized to indicate the patch resolves the task.
 
 version
