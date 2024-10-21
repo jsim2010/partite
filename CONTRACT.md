@@ -1,106 +1,100 @@
 # Partite
 
-## Definitions
+operation
+: An interaction with a project.
+
+agent
+: An entity that performs an operation.
+
+vote
+: A determination if a given operation shall be executed.
 
 action
-: An operation that can only be executed via a vote.
-
-adjustment
-: A set of modifications to a given standard.
-
-adoption
-: An action that applies a given alteration to a vision.
-
-alteration
-: A set of modifications to a given vision.
-
-assignment
-: A set of roles.
+: An operation that shall only be executed after a vote affirms it.
 
 ballot
-: A declaration of a given operative's desire concerning a given vote.
+: A declaration of a given agent's desire concerning a given vote.
 
-operative
-: An entity that operates on the project and has an assignment.
+voter
+: An agent that is eligible to submit a ballot for a given vote.
+
+roll call
+: An operation that requests ballots concerning a given vote from its voters.
+
+affirmation
+: An operation that determines if a vote's action shall be executed.
+
+## Assignment
+
+role
+: A classification of an agent which defines the operations the agent is eligible to perform.
+: One of director, consul, inspector, architect, developer.
+
+assignment
+: A set of roles that are applied to a given agent.
+
+reassignment
+: An action that modifies an actor's assignment.
+
+An agent must accept the addition of a role to their assignment.
+
+A given agent shall not be able to execute any operations that are not explictly included in one of the roles included in their assignment.
+
+When an agent requests any of the roles in their assignment be removed, it shall be done.
+
+When a project is created, all agents responsible for the creation shall have the director role added to their assignment.
+
+Each director shall be a voter in all reassignments.
+
+## Standard
 
 policy
 : A condition that, when met, triggers the execution of a given operation.
 
-reassignment
-: An action that modifies a given operative's assignment.
-
-role
-: A classification of an operative which defines the operations the operative is eligible to perform.
-
-sanction
-: An action that applies a given adjustment to a standard.
-
 standard
 : A set of policies.
 
+sanction
+: An action that modifies a standard.
+
+A project's standard shall define a policy for both the roll call and the affirmation of each defined action.
+
+Each director shall be a voter in all sanctions.
+
+## Vision
+
 vision
-: A succinct purpose that describes the intention of the project.
+: A succinct purpose tha describes the intention of a project.
 
-vote
-: A defined process that determines if a given operation shall be executed.
-        
-## I) Voting
+adoption
+: An action that modifies a vision.
 
-1) A ballot shall declare one of the following:
-
-   a) *Approval*: the voter desires the action be executed
-   
-   b) *Disapproval*: the voter desires the action not be executed
-2) The project's standard shall have a a policy defined for each of the following operations for every action defined in the contract (see Appendix A for a list):
-   
-   a) *Vote Initiation*: when ballots for the vote shall be requested from the eligible operatives
-   
-   b) *Affirmation*: when the action shall be executed
-   
-## II) Roles
-
-1) **Resignation**: Any operative shall be able to remove any role from their assignment at any time.
-2) The following roles shall exist:
-   
-   a) director
-   
-   b) consul
-   
-   c) inspector
-   
-   d) architect
-   
-   e) developer
-3) A given operative shall not be able to execute any operations that are not explictly given to one of the roles in their assignment.
-4) **Founders**: When a project is created, all operatives responsible for the creation shall have the director role added to their assignment.
-
-## Director
-
-1) A director shall be eligible to tender a ballot for the following actions:
-   a) reassignment
-   b) sanction
-   c) adoption
-   
-## Appendix A) Actions
-
-This is a list of all actions that are defined in this contract.
-
-1) Reassignment of an operative's roles
-2) Sanction of a standard
-3) Adoption of a vision
-
----
+Each director shall be a voter in all adoptions.
 
 ## Contract
 
 requirement
-: An object composed of:
-
-  - a non-empty set of inputs
-  - the behavior that fulfills the vision
+: A description of a desired behavior.
 
 contract
-: A list containing all requirements of a project.
+: A set of all the requirements of a project.
+
+enactment
+: An action that modifies a contract.
+
+Each director shall be a voter in all enactments.
+
+---
+
+
+
+## Definitions
+
+adjustment
+: A set of modifications to a given standard.
+
+alteration
+: A set of modifications to a given vision.
 
 edit
 : A collection of modifications to a contract.
@@ -128,8 +122,6 @@ amendment
 
 enactment
 : An action on a given amendment that removes each of its objectives from the agenda, applies the edit to the contract, then creates a revision with the amendment and the new contract.
-
----
 
 1) A director shall be able to:
    
@@ -291,5 +283,4 @@ Suggestions for voting:
 - include a time frame so that votes cannot be dragged out
 - consider "blank" ballots where an operative does not submit a ballot
 Rules for the name - perhaps semantic versioning?
-Specifications can be seen as requirements for unit tests. Is there a way to test them?
 ```
