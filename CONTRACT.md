@@ -1,75 +1,81 @@
 # Partite
 
+project
+: An effort to create and/or maintain something.
+
 operation
-: An interaction with a project.
+: A modification of a project.
 
 agent
-: An entity that performs an operation.
+: An entity that can perform an operation.
 
-vote
-: A determination if a given operation shall be executed.
+procedure
+: A definition of an action.
 
-action
-: An operation that shall only be executed after a vote affirms it.
-
-ballot
-: A declaration of a given agent's desire concerning a given vote.
-
-voter
-: An agent that is eligible to submit a ballot for a given vote.
-
-roll call
-: An operation that requests ballots concerning a given vote from its voters.
-
-affirmation
-: An operation that determines if a vote's action shall be executed.
-
-## Assignment
+administrator
+: The agent that executes a given procedure.
 
 role
-: A classification of an agent which defines the operations the agent is eligible to perform.
-: One of director, consul, inspector, architect, developer.
+: A classification of an agent which defines the operations the agent shall perform.
+: One of director, consul, judge, architect, developer.
+
+## Acts
+
+decision
+: A process that determines if a given operation shall be executed.
+
+act
+: An operation that shall only be executed via a decision.
+
+ballot
+: A description of a given agent's desire regarding a decision.
+
+voter
+: An agent that is eligible to complete a ballot for a given decision.
+
+roll call
+: A procedure that requests ballots regarding a decision from its voters.
+
+affirmation
+: A procedure that executes an act.
+
+## Standard
+
+policy
+: A condition that, when met, triggers a given procedure be executed by its respective administrator.
+
+standard
+: A set of policies defined for a project.
+
+sanction
+: An act that modifies a standard.
+
+- A project's standard shall define the following for each of its acts: its administrator, a policy for its roll call and a policy for its affirmation.
+- Each director shall be a voter in all sanctions.
+
+## Assignment
 
 assignment
 : A set of roles that are applied to a given agent.
 
 reassignment
-: An action that modifies an actor's assignment.
+: An act that modifies an actor's assignment.
 
-An agent must accept the addition of a role to their assignment.
-
-A given agent shall not be able to execute any operations that are not explictly included in one of the roles included in their assignment.
-
-When an agent requests any of the roles in their assignment be removed, it shall be done.
-
-When a project is created, all agents responsible for the creation shall have the director role added to their assignment.
-
-Each director shall be a voter in all reassignments.
-
-## Standard
-
-policy
-: A condition that, when met, triggers the execution of a given operation.
-
-standard
-: A set of policies.
-
-sanction
-: An action that modifies a standard.
-
-A project's standard shall define a policy for both the roll call and the affirmation of each defined action.
-
-Each director shall be a voter in all sanctions.
+- A given agent shall not be able to execute any operations that are not explictly included in one of the roles included in their assignment.
+- The affirmation of a reassignment that adds any number of roles to an agent's assignment shall only proceed if the agent accepts it.
+- Any agent shall be able to execute a reassignment that removes any number of roles from their assignment without a decision.
+- When a project is created, all agents responsible for the creation shall have the director role added to their assignment.
+- Each director shall be a voter in reassignment acts.
 
 ## Vision
 
 vision
-: A succinct purpose tha describes the intention of a project.
+: A succinct description of the intention of a project.
 
 adoption
-: An action that modifies a vision.
+: An act that modifies a vision.
 
-Each director shall be a voter in all adoptions.
+- Each director shall be a voter in all adoptions.
 
 ## Contract
 
@@ -80,13 +86,34 @@ contract
 : A set of all the requirements of a project.
 
 enactment
-: An action that modifies a contract.
+: An act that modifies a contract.
 
-Each director shall be a voter in all enactments.
+- Each consul shall be a voter in all enactments.
+
+## Strategy
+
+specification
+: An explanation of how one or more requirements shall be satisfied.
+
+strategy
+: A set of specifications that cover the entirety of a contract.
+
+confirmation
+: An act that modifies a strategy.
+
+- Each architect shall be a voter in all confirmations.
+
+## Product
+
+product
+: An implementation of a strategy.
+
+authorization
+: An act that modifies a product.
+
+- Each judge shall be a voter in all authorizations.
 
 ---
-
-
 
 ## Definitions
 
@@ -126,21 +153,11 @@ enactment
 1) A director shall be able to:
    
    a) create an objective
-   
-   b) tender a ballot for a ratification
-   
-   c) tender a ballot for an enactment
 2) A consul shall be able to:
    
    a) create an amendment
 
 ## IV) Strategy
-
-specification
-: An explanation of how one or more requirements shall be satisfied.
-
-strategy
-: A collection of specifications that cover the entirety of the contract in a given revision.
 
 adaptation
 : A collection of modifications to a strategy.
@@ -157,7 +174,7 @@ flaw
 plan
 : A list of flaws to be resolved for a given strategy.
 
-confirmation
+affirmation
 : An action that that adds a given flaw to the plan.
         
 blueprint
@@ -166,13 +183,7 @@ blueprint
 - an adaptation
 : It can be approved to indicate the adaptation resolves the flaw.
 
-affirmation:
-: An action on a given blueprint that removes the flaw from the plan, applies the adaptation, and creates an edition.
-
 ## VI) Product
-
-product
-: An execution of a strategy.
 
 defect
 : A failed analysis
@@ -275,12 +286,11 @@ The following table shows the relation of the different entities in a project.
 
 
 ```
-How to divide a project into sub projects.
-How to branch projects that are taking separate paths.
+How to add sub projects to a project.
+How to branch projects that are have the same vision but different strategies or products.
 Suggestions for voting:
 - how shall the action be shared, discussed, and modified
 - should the initial submitter be allowed to vote
 - include a time frame so that votes cannot be dragged out
 - consider "blank" ballots where an operative does not submit a ballot
-Rules for the name - perhaps semantic versioning?
 ```
